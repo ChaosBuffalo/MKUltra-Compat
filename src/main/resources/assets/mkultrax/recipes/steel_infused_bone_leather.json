@@ -5,14 +5,10 @@
     "hhh"
   ],
   "type": "minecraft:crafting_shaped",
-<<<<<<< HEAD:src/main/resources/assets/mkultra/recipes/steel_infused_bone_leather.json
   "result": {
     "count": 9,
-    "item": "mkultra:steel_infused_bone_leather"
+    "item": "mkultrax:steel_infused_bone_leather"
   },
-=======
-  "result": {"count": 9, "item": "mkultrax:steel_infused_bone_leather"},
->>>>>>> 4c2987157e16d1818665da9ce0f8f87f65896153:src/main/resources/assets/mkultrax/recipes/steel_infused_bone_leather.json
   "key": {
     "s": {
       "item": "basemetals:steel_powder"

@@ -19,7 +19,7 @@
       "ore": "ingotBronze",
       "type": "forge:ore_dict"
     },
-    "i":{
+    "i": {
       "ore": "ingotBrass",
       "type": "forge:ore_dict"
     }

@@ -1,5 +1,5 @@
 {
-	"conditions": {
-		"mod_exists": "com.chaosbuffalo.mkultrax.utils.ConditionFactoryModLoaded"
-	}
+  "conditions": {
+    "mod_exists": "com.chaosbuffalo.mkultrax.utils.ConditionFactoryModLoaded"
+  }
 }

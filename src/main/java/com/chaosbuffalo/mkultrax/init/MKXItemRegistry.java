@@ -21,7 +21,7 @@ import java.util.Set;
 
 
 @Mod.EventBusSubscriber
-@GameRegistry.ObjectHolder(MKUltra.MODID)
+@GameRegistry.ObjectHolder(MKUltraX.MODID)
 public class MKXItemRegistry {
 
     private static final Set<Item> ALL_ITEMS = new HashSet<>();
@@ -33,7 +33,7 @@ public class MKXItemRegistry {
     }
 
     public static void regInternal(Item item){
-        item.setRegistryName(new ResourceLocation(MKUltraX.MODID, item.getUnlocalizedName()));
+        item.setRegistryName(MKUltraX.MODID, item.getUnlocalizedName().substring(5));
         ALL_ITEMS.add(item);
     }
 
