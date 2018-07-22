@@ -1,8 +1,6 @@
 package com.chaosbuffalo.mkultrax;
 
-import com.chaosbuffalo.mkultrax.Integrations.BetweelandsIntegration;
-import com.chaosbuffalo.mkultrax.Integrations.IIntegration;
-import com.chaosbuffalo.mkultrax.Integrations.IceAndFireIntegration;
+import com.chaosbuffalo.mkultrax.Integrations.*;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -14,12 +12,12 @@ import scala.Array;
 import java.util.ArrayList;
 
 @Mod(modid = MKUltraX.MODID, name = MKUltraX.NAME, version = MKUltraX.VERSION,
-        dependencies="after:thebetweenlands;after:iceandfire")
+        dependencies="after:thebetweenlands;after:iceandfire;after:lycanitesmobs;after:astralsorcery")
 public class MKUltraX
 {
     public static final String MODID = "mkultrax";
     public static final String NAME = "MK Ultra Compat";
-    public static final String VERSION = "0.01";
+    public static final String VERSION = "0.02";
 
     private static Logger logger;
 
@@ -35,6 +33,8 @@ public class MKUltraX
         ArrayList<IIntegration> toDo = new ArrayList<IIntegration>();
         toDo.add(new BetweelandsIntegration());
         toDo.add(new IceAndFireIntegration());
+        toDo.add(new LycanitesIntegration());
+        toDo.add(new AstralSorceryIntegration());
 
         for (IIntegration integration : toDo){
             if (integration.needsRun()){

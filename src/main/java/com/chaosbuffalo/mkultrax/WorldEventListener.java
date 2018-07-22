@@ -1,15 +1,11 @@
 package com.chaosbuffalo.mkultrax;
 
 import com.chaosbuffalo.mkultra.core.PlayerAttributes;
-import com.chaosbuffalo.mkultra.log.Log;
 import com.lycanitesmobs.core.entity.EntityCreatureBase;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeMap;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.IAttribute;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
@@ -30,6 +26,8 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(Side.SERVER)
 public class WorldEventListener implements IWorldEventListener {
     public static WorldEventListener INSTANCE = new WorldEventListener();
+    private static double DISTANCE_SCALING = 1500.0;
+    private static int LEVEL_SCALING = 4;
 
     public boolean isLycanitesLoaded;
 
@@ -87,11 +85,24 @@ public class WorldEventListener implements IWorldEventListener {
                 EntityCreatureBase creature = (EntityCreatureBase) entityIn;
                 double scale = creature.getRenderScale();
                 if (scale > 1.0){
-                    creature.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)
-                            .applyModifier(new AttributeModifier(
-                                    UUID.fromString("749d6722-b566-472d-b33c-d3c1b8cd0b8d"),
-                                    "Size Health Bonus",
-                                    scale + 1.0, PlayerAttributes.OP_SCALE_MULTIPLICATIVE));
+                    AttributeModifier modifier = creature.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).getModifier(UUID.fromString("749d6722-b566-472d-b33c-d3c1b8cd0b8d"));
+                    if (modifier == null){
+                        creature.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)
+                                .applyModifier(new AttributeModifier(
+                                        UUID.fromString("749d6722-b566-472d-b33c-d3c1b8cd0b8d"),
+                                        "Size Health Bonus",
+                                        scale + 1.0, PlayerAttributes.OP_SCALE_MULTIPLICATIVE));
+                    }
+                }
+                double distance2 = creature.getDistanceSq(BlockPos.ORIGIN);
+
+                double distanceOut = distance2 / (DISTANCE_SCALING * DISTANCE_SCALING);
+                if (distanceOut > 1.0){
+                    int scaleFactor = Math.min((int) distanceOut, 8);
+                    if (creature.getLevel() < (scaleFactor+2)*LEVEL_SCALING){
+                        creature.addLevel(scaleFactor*LEVEL_SCALING);
+                    }
+
                 }
             }
         }
