@@ -1,4 +1,4 @@
-package com.chaosbuffalo.mkultrax.Integrations;
+package com.chaosbuffalo.mkultrax.integrations;
 
 import com.chaosbuffalo.mkultra.core.ArmorClass;
 import com.chaosbuffalo.mkultra.event.ItemRestrictionHandler;
@@ -8,6 +8,9 @@ import com.github.alexthe666.iceandfire.enums.EnumDragonArmor;
 import com.github.alexthe666.iceandfire.item.ItemAlchemySword;
 import com.github.alexthe666.iceandfire.item.ItemModAxe;
 import com.github.alexthe666.iceandfire.item.ItemTrollWeapon;
+import net.minecraft.entity.Entity;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 
 /**
@@ -16,12 +19,12 @@ import net.minecraftforge.fml.common.Loader;
 public class IceAndFireIntegration implements IIntegration {
 
     @Override
-    public boolean needsRun() {
+    public boolean isLoaded() {
         return Loader.isModLoaded("iceandfire");
     }
 
     @Override
-    public void setup() {
+    public void mod_init() {
         ArmorClass.HEAVY
                 .register(EnumDragonArmor.armor_blue.armorMaterial)
                 .register(EnumDragonArmor.armor_bronze.armorMaterial)
@@ -53,6 +56,21 @@ public class IceAndFireIntegration implements IIntegration {
         ItemUtils.addCriticalStats(ItemModAxe.class, 1, .15f, 2.0f);
         ItemRestrictionHandler.addShieldRestrictedItem(ItemAlchemySword.class, 0);
         ItemRestrictionHandler.addShieldRestrictedItem(ItemTrollWeapon.class, 0);
+
+    }
+
+    @Override
+    public void crafting_register(RegistryEvent.Register<IRecipe> event) {
+
+    }
+
+    @Override
+    public void on_entity_added(Entity entityIn) {
+
+    }
+
+    @Override
+    public void init_items_phase() {
 
     }
 }

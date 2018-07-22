@@ -1,11 +1,8 @@
 package com.chaosbuffalo.mkultrax;
 
-import com.chaosbuffalo.mkultra.core.PlayerAttributes;
-import com.lycanitesmobs.core.entity.EntityCreatureBase;
+import com.chaosbuffalo.mkultrax.integrations.IIntegration;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
@@ -18,22 +15,17 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
 import javax.annotation.Nullable;
-import java.util.UUID;
 
 /**
  * Created by Jacob on 7/21/2018.
  */
 @Mod.EventBusSubscriber(Side.SERVER)
-public class WorldEventListener implements IWorldEventListener {
-    public static WorldEventListener INSTANCE = new WorldEventListener();
-    private static double DISTANCE_SCALING = 1500.0;
-    private static int LEVEL_SCALING = 4;
+public class MKXWorldListener implements IWorldEventListener {
+    public static MKXWorldListener INSTANCE = new MKXWorldListener();
 
-    public boolean isLycanitesLoaded;
 
-    public WorldEventListener(){
+    public MKXWorldListener(){
         super();
-        isLycanitesLoaded = false;
     }
 
     @SuppressWarnings("unused")
@@ -80,30 +72,9 @@ public class WorldEventListener implements IWorldEventListener {
 
     @Override
     public void onEntityAdded(Entity entityIn) {
-        if (isLycanitesLoaded){
-            if (entityIn instanceof EntityCreatureBase){
-                EntityCreatureBase creature = (EntityCreatureBase) entityIn;
-                double scale = creature.getRenderScale();
-                if (scale > 1.0){
-                    AttributeModifier modifier = creature.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).getModifier(UUID.fromString("749d6722-b566-472d-b33c-d3c1b8cd0b8d"));
-                    if (modifier == null){
-                        creature.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)
-                                .applyModifier(new AttributeModifier(
-                                        UUID.fromString("749d6722-b566-472d-b33c-d3c1b8cd0b8d"),
-                                        "Size Health Bonus",
-                                        scale + 1.0, PlayerAttributes.OP_SCALE_MULTIPLICATIVE));
-                    }
-                }
-                double distance2 = creature.getDistanceSq(BlockPos.ORIGIN);
-
-                double distanceOut = distance2 / (DISTANCE_SCALING * DISTANCE_SCALING);
-                if (distanceOut > 1.0){
-                    int scaleFactor = Math.min((int) distanceOut, 8);
-                    if (creature.getLevel() < (scaleFactor+2)*LEVEL_SCALING){
-                        creature.addLevel(scaleFactor*LEVEL_SCALING);
-                    }
-
-                }
+        for (IIntegration integration : MKUltraX.integrations){
+            if (integration.isLoaded()){
+                integration.on_entity_added(entityIn);
             }
         }
     }

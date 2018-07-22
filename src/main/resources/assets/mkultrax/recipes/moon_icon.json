@@ -1,0 +1,23 @@
+{
+  "pattern": [
+    " m",
+    "m ",
+    " m"
+  ],
+  "conditions": [
+    {
+      "mod_name": "basemetals",
+      "type": "mod_exists"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "mkultra:moon_icon"
+  },
+  "key": {
+    "m": {
+      "ore": "ingotMithril",
+      "type": "forge:ore_dict"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "pattern": [
+    " s ",
+    "sis",
+    " s "
+  ],
+  "conditions": [
+    {
+      "mod_name": "basemetals",
+      "type": "mod_exists"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "mkultra:sun_icon"
+  },
+  "key": {
+    "s": {
+      "ore": "ingotBronze",
+      "type": "forge:ore_dict"
+    },
+    "i":{
+      "ore": "ingotBrass",
+      "type": "forge:ore_dict"
+    }
+  }
+}
