@@ -44,12 +44,13 @@ public class IceAndFireIntegration implements IIntegration {
 
         ArmorClass.ROBES
                 .register(ModItems.blindfoldArmor)
-                .register(ModItems.earplugsArmor);
+                .register(ModItems.earplugsArmor)
+                .register(ModItems.sheep);
 
         ItemUtils.addCriticalStats(ItemAlchemySword.class, 1, .1f, 2.25f);
         ItemUtils.addCriticalStats(ItemTrollWeapon.class, 1, .05f, 3.0f);
-        ItemRestrictionHandler.addShieldRestrictedItem(ItemAlchemySword.class);
-        ItemRestrictionHandler.addShieldRestrictedItem(ItemTrollWeapon.class);
+        ItemRestrictionHandler.addShieldRestrictedItem(ItemAlchemySword.class, 0);
+        ItemRestrictionHandler.addShieldRestrictedItem(ItemTrollWeapon.class, 0);
 
     }
 }

@@ -22,10 +22,10 @@ public class AstralSorceryIntegration implements IIntegration {
 
     @Override
     public void setup() {
-        ItemRestrictionHandler.addShieldRestrictedItem(ItemCrystalAxe.class);
-        ItemRestrictionHandler.addShieldRestrictedItem(ItemCrystalSword.class);
-        ItemRestrictionHandler.addShieldRestrictedItem(ItemChargedCrystalAxe.class);
-        ItemRestrictionHandler.addShieldRestrictedItem(ItemChargedCrystalSword.class);
+        ItemRestrictionHandler.addShieldRestrictedItem(ItemCrystalAxe.class, 0);
+        ItemRestrictionHandler.addShieldRestrictedItem(ItemCrystalSword.class, 0);
+        ItemRestrictionHandler.addShieldRestrictedItem(ItemChargedCrystalAxe.class, 1);
+        ItemRestrictionHandler.addShieldRestrictedItem(ItemChargedCrystalSword.class, 1);
         ArmorClass.ROBES.register(RegistryItems.imbuedLeatherMaterial);
     }
 }
