@@ -3,13 +3,11 @@ package com.chaosbuffalo.mkultrax.network.packets.client;
 /**
  * Created by Jacob on 7/22/2018.
  */
-import com.chaosbuffalo.mkultra.init.ModItems;
 import com.chaosbuffalo.mkultra.item.ItemHelper;
 import com.chaosbuffalo.mkultra.item.PhoenixDust;
 import com.chaosbuffalo.mkultra.log.Log;
 import com.chaosbuffalo.mkultra.network.MessageHandler;
 import com.chaosbuffalo.mkultra.utils.ServerUtils;
-import com.chaosbuffalo.mkultrax.MKUltraX;
 import com.chaosbuffalo.mkultrax.integrations.LootableBodiesIntegration;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
@@ -41,7 +39,7 @@ public class ResurrectPlayerPacket implements IMessage {
         public IMessage handleServerMessage(final EntityPlayer player, ResurrectPlayerPacket msg, MessageContext ctx) {
             ServerUtils.addScheduledTask(() -> {
 
-                if (player.getHeldItemMainhand().getItem() == ModItems.phoenix_dust) {
+                if (player.getHeldItemMainhand().getItem() == LootableBodiesIntegration.phoenix_dust) {
 
                     List<Entity> corpses = LootableBodiesIntegration.getLootableBodiesAroundPlayer(player, PhoenixDust.RANGE);
 
