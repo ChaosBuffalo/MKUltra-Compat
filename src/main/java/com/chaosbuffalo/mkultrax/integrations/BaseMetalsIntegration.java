@@ -186,8 +186,6 @@ public class BaseMetalsIntegration implements IIntegration {
 
 
         CrusherRecipeRegistry.addNewCrusherRecipe(Items.DIAMOND, new ItemStack(ModItems.diamond_dust, 4));
-        CrusherRecipeRegistry.addNewCrusherRecipe(ModItems.hempLeaves,
-                new ItemStack(ModItems.hempFibers, 2));
         CrusherRecipeRegistry.addNewCrusherRecipe(Blocks.OBSIDIAN,
                 new ItemStack(com.mcmoddev.basemetals.init.Materials.getMaterialByName(MaterialNames.OBSIDIAN).getItem(Names.POWDER), 4));
 
