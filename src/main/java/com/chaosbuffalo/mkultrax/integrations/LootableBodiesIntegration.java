@@ -1,5 +1,6 @@
 package com.chaosbuffalo.mkultrax.integrations;
 import com.chaosbuffalo.mkultra.MKUltra;
+import com.chaosbuffalo.mkultra.init.Remapper;
 import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.init.MKXItemRegistry;
 import com.chaosbuffalo.mkultrax.items.lootablebodies.PhoenixDust;
@@ -9,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
@@ -96,6 +98,8 @@ public class LootableBodiesIntegration implements IIntegration {
     public void init_items_phase() {
         MKXItemRegistry.regInternal(phoenix_dust = new PhoenixDust("phoenix_dust")
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
+
+        Remapper.replace(new ResourceLocation("mkultra:phoenix_dust"), phoenix_dust.getRegistryName());
     }
 
     @Override
