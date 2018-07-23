@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "modid": "betterwithmods",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "result": {
+    "item": "mkultra:gold_threaded_cloth"
+  },
+  "key": {
+    "f": {
+      "item": "betterwithmods:material",
+      "data": 3
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "fff",
+    "fgf",
+    "fff"
+  ]
+}

@@ -25,6 +25,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.registries.IForgeRegistryModifiable;
 
 /**
  * Created by Jacob on 7/22/2018.
@@ -57,6 +58,10 @@ public class BWMIntegration implements IIntegration {
     @Override
     public void crafting_register(RegistryEvent.Register<IRecipe> event) {
         Log.info("BWMIntegration, crafting_register");
+
+        ResourceLocation goldThreadedCloth = new ResourceLocation("mkultra:gold_threaded_cloth");
+        IForgeRegistryModifiable modRegistry = (IForgeRegistryModifiable) event.getRegistry();
+        modRegistry.remove(goldThreadedCloth);
     }
 
     @Override
