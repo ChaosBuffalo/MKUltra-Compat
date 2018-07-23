@@ -320,6 +320,4 @@ public class BaseMetalsIntegration implements IIntegration {
                 "mana_regen_idol_bronze", .5f, 5, 0, 0, 300)
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
     }
-
-
 }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 @Mod(modid = MKUltraX.MODID, name = MKUltraX.NAME, version = MKUltraX.VERSION,
         dependencies="after:thebetweenlands;after:iceandfire;after:lycanitesmobs;after:astralsorcery;" +
-                "after:basemetals;required-after:mkultra")
+                "after:basemetals;required-after:mkultra;after:poweradvantage")
 public class MKUltraX
 {
     public static final String MODID = "mkultrax";
@@ -24,6 +24,8 @@ public class MKUltraX
     public static LycanitesIntegration lycanites;
     public static AstralSorceryIntegration astralSorcery;
     public static BaseMetalsIntegration baseMetals;
+    public static SpartanWeaponryIntegration spartanWeaponry;
+    public static LootableBodiesIntegration lootableBodiesIntegration;
 
     public static final ArrayList<IIntegration> integrations = new ArrayList<>();
 
@@ -33,6 +35,8 @@ public class MKUltraX
         integrations.add(lycanites = new LycanitesIntegration());
         integrations.add(astralSorcery = new AstralSorceryIntegration());
         integrations.add(baseMetals = new BaseMetalsIntegration());
+        integrations.add(spartanWeaponry = new SpartanWeaponryIntegration());
+        integrations.add(lootableBodiesIntegration = new LootableBodiesIntegration());
     }
 
     private static Logger logger;

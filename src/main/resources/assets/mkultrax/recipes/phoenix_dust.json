@@ -1,0 +1,28 @@
+{
+  "pattern": [
+    "db",
+    "ff"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "mod_name": "lootablebodies",
+      "type": "mod_exists"
+    }
+  ],
+  "result": {
+    "item": "mkultrax:phoenix_dust"
+  },
+  "key": {
+    "d": {
+      "item": "mkultra:diamond_dust"
+    },
+    "b": {
+      "item": "minecraft:dye",
+      "data": 15
+    },
+    "f": {
+      "item": "minecraft:rotten_flesh"
+    }
+  }
+}
