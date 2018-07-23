@@ -13,6 +13,7 @@ import com.chaosbuffalo.mkultrax.init.MKXBlockRegistry;
 import com.chaosbuffalo.mkultrax.tiles.bwm.PortalTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import com.chaosbuffalo.mkultra.init.Remapper;
 import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.init.MKXItemRegistry;
 import net.minecraft.entity.Entity;
@@ -67,6 +68,8 @@ public class BWMIntegration implements IIntegration {
     public void init_items_phase() {
         Log.info("BWMIntegration, init_items_phase");
         MKXItemRegistry.regInternal(HEMP_SEED_BREAD);
+
+        Remapper.replace(new ResourceLocation("mkultra:hempseedbread"), HEMP_SEED_BREAD.getRegistryName());
     }
 
     @Override

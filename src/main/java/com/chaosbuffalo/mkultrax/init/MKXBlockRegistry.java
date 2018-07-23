@@ -1,14 +1,9 @@
 package com.chaosbuffalo.mkultrax.init;
 
-import com.chaosbuffalo.mkultra.MKUltra;
-import com.chaosbuffalo.mkultra.blocks.HempBlock;
-import com.chaosbuffalo.mkultra.blocks.RopeBlock;
-import com.chaosbuffalo.mkultra.blocks.XpTableBlock;
-import com.chaosbuffalo.mkultra.log.Log;
+
 import com.chaosbuffalo.mkultrax.MKUltraX;
 import com.chaosbuffalo.mkultrax.integrations.IIntegration;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
