@@ -1,6 +1,6 @@
 package com.chaosbuffalo.mkultrax.init;
 
-import com.chaosbuffalo.mkultra.log.Log;
+import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.MKUltraX;
 import com.chaosbuffalo.mkultrax.integrations.IIntegration;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;

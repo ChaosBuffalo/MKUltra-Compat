@@ -1,6 +1,6 @@
 package com.chaosbuffalo.mkultrax.tiles.bwm;
 
-import com.chaosbuffalo.mkultra.log.Log;
+import com.chaosbuffalo.mkultrax.Log;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;

@@ -2,7 +2,7 @@ package com.chaosbuffalo.mkultrax.blocks.bwm;
 
 import betterwithmods.api.block.ISoulSensitive;
 import com.chaosbuffalo.mkultra.MKUltra;
-import com.chaosbuffalo.mkultra.log.Log;
+import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.MKUltraX;
 import com.chaosbuffalo.mkultrax.tiles.bwm.PortalTileEntity;
 import net.minecraft.block.Block;
