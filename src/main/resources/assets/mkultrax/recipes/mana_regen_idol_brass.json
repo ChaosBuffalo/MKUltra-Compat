@@ -1,5 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "mod_name": "basemetals",
+      "type": "mod_exists"
+    }
+  ],
   "group": "mana_regen_idol",
   "result": {
     "item": "mkultrax:mana_regen_idol_brass"

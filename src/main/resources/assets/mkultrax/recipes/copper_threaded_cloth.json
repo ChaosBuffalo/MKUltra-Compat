@@ -5,6 +5,12 @@
     "www"
   ],
   "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "mod_name": "basemetals",
+      "type": "mod_exists"
+    }
+  ],
   "result": {
     "count": 9,
     "item": "mkultrax:copper_threaded_cloth"

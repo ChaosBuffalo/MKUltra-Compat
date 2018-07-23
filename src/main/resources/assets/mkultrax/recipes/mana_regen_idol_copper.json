@@ -1,1 +1,26 @@
-{"type": "minecraft:crafting_shaped", "group": "mana_regen_idol", "result": {"item": "mkultrax:mana_regen_idol_copper"}, "key": {"i": {"item": "basemetals:copper_ingot"}, "e": {"item": "minecraft:emerald"}}, "pattern": [" e ", " i ", " i "]}
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "mod_name": "basemetals",
+      "type": "mod_exists"
+    }
+  ],
+  "group": "mana_regen_idol",
+  "result": {
+    "item": "mkultrax:mana_regen_idol_copper"
+  },
+  "key": {
+    "i": {
+      "item": "basemetals:copper_ingot"
+    },
+    "e": {
+      "item": "minecraft:emerald"
+    }
+  },
+  "pattern": [
+    " e ",
+    " i ",
+    " i "
+  ]
+}

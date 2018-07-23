@@ -5,7 +5,6 @@ import com.chaosbuffalo.mkultra.log.Log;
 import com.chaosbuffalo.mkultrax.init.MKXItemRegistry;
 import com.chaosbuffalo.targeting_api.Targeting;
 import com.google.common.collect.Lists;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
