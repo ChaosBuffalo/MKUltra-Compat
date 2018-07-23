@@ -24,3 +24,4 @@ item.mana_regen_idol_copper.name=Copper Idol
 item.mana_regen_idol_bronze.name=Bronze Idol
 item.mana_regen_idol_brass.name=Brass Idol
 item.mana_regen_idol_silver.name=Silver Idol
+tile.portal_block.name=Portal Block

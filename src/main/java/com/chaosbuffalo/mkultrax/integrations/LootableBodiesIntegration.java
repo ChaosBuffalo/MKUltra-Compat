@@ -97,4 +97,14 @@ public class LootableBodiesIntegration implements IIntegration {
         MKXItemRegistry.regInternal(phoenix_dust = new PhoenixDust("phoenix_dust")
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
     }
+
+    @Override
+    public void register_tile_entities() {
+
+    }
+
+    @Override
+    public void init_blocks_phase() {
+
+    }
 }

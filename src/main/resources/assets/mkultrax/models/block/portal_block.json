@@ -1,0 +1,12 @@
+{
+  "textures": {
+    "north": "mkultrax:blocks/portalblock-sides",
+    "particle": "blocks/planks_oak",
+    "west": "mkultrax:blocks/portalblock-sides",
+    "up": "mkultrax:blocks/portalblock-top",
+    "down": "mkultrax:blocks/portalblock-bot",
+    "east": "mkultrax:blocks/portalblock-sides",
+    "south": "mkultrax:blocks/portalblock-sides"
+  },
+  "parent": "block/cube"
+}
