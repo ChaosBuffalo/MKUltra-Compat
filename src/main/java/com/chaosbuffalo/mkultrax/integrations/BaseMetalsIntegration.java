@@ -1,5 +1,6 @@
 package com.chaosbuffalo.mkultrax.integrations;
 
+import betterwithmods.common.BWRegistry;
 import com.chaosbuffalo.mkultra.MKUltra;
 import com.chaosbuffalo.mkultra.core.ArmorClass;
 import com.chaosbuffalo.mkultra.core.PlayerAttributes;
@@ -11,10 +12,12 @@ import com.chaosbuffalo.mkultra.log.Log;
 import com.chaosbuffalo.mkultrax.MKUltraX;
 import com.chaosbuffalo.mkultrax.init.MKXItemRegistry;
 import com.chaosbuffalo.mkultrax.init.MKXRecipeRegistry;
+import com.mcmoddev.basemetals.BaseMetals;
 import com.mcmoddev.basemetals.data.MaterialNames;
 import com.mcmoddev.basemetals.init.Materials;
 import com.mcmoddev.lib.data.Names;
 import com.mcmoddev.lib.registry.CrusherRecipeRegistry;
+import com.mcmoddev.lib.registry.recipe.ICrusherRecipe;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
@@ -128,6 +131,14 @@ public class BaseMetalsIntegration implements IIntegration {
                 .register(Materials.getArmorMaterialFor(Materials.getMaterialByName(MaterialNames.PLATINUM)))
                 .register(Materials.getArmorMaterialFor(Materials.getMaterialByName(MaterialNames.BRONZE)))
                 .register(DIAMOND_DUSTED_INVAR_MAT);
+
+        if (MKUltraX.bwmIntegration.isLoaded()){
+            for (ICrusherRecipe recipe : CrusherRecipeRegistry.getAll()){
+                for (ItemStack input : recipe.getInputs()){
+                    BWRegistry.MILLSTONE.addMillRecipe(input, recipe.getOutput());
+                }
+            }
+        }
     }
 
     @Override
