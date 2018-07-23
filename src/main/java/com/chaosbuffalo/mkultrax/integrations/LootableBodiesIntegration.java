@@ -1,8 +1,8 @@
 package com.chaosbuffalo.mkultrax.integrations;
 import com.chaosbuffalo.mkultra.MKUltra;
-import com.chaosbuffalo.mkultra.item.PhoenixDust;
 import com.chaosbuffalo.mkultra.log.Log;
 import com.chaosbuffalo.mkultrax.init.MKXItemRegistry;
+import com.chaosbuffalo.mkultrax.items.lootablebodies.PhoenixDust;
 import com.chaosbuffalo.targeting_api.Targeting;
 import com.google.common.collect.Lists;
 import net.minecraft.entity.Entity;

@@ -5,7 +5,7 @@ package com.chaosbuffalo.mkultrax.items.lootablebodies;
  */
 
 import com.chaosbuffalo.mkultra.MKUltra;
-import com.chaosbuffalo.mkultra.network.packets.client.ResurrectPlayerPacket;
+import com.chaosbuffalo.mkultrax.network.packets.client.ResurrectPlayerPacket;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
