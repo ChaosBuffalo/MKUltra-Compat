@@ -52,6 +52,7 @@ public class PortalTileEntity extends TileEntity {
         current_souls -= value;
         if (current_souls <= 0){
             is_powered = false;
+            current_souls = 0;
         }
         sync();
     }

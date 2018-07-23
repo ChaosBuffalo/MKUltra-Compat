@@ -117,7 +117,7 @@ public class PortalBlock extends Block implements ISoulSensitive, ITileEntityPro
         int cost = calculateCost(world, pos);
         if (cost > 0 && portalEntity != null) {
             if (portalEntity.is_powered) {
-                if (portalEntity.current_souls < cost){
+                if (portalEntity.current_souls < cost && portalEntity.current_souls > 0){
                     if (rand.nextInt(MAX_SOULS / portalEntity.current_souls) == 0) {
                         int x = pos.getX();
                         int y = pos.getY();
@@ -184,6 +184,7 @@ public class PortalBlock extends Block implements ISoulSensitive, ITileEntityPro
             PortalTileEntity portalEntity = (PortalTileEntity) world.getTileEntity(pos);
             if (portalEntity != null && portalEntity.is_powered){
                 int cost = calculateCost(world, pos);
+                Log.info(String.format("trying to activate portal entity %d, %d", cost, portalEntity.current_souls));
                 if (portalEntity.current_souls >= cost){
                     portalEntity.subtractSouls(cost);
                     Vec3i dist = calculateDistance(world, pos);
@@ -205,7 +206,7 @@ public class PortalBlock extends Block implements ISoulSensitive, ITileEntityPro
     public int getMaximumSoulIntake(IBlockAccess iBlockAccess, BlockPos blockPos) {
         PortalTileEntity portalTileEntity = (PortalTileEntity) iBlockAccess.getTileEntity(blockPos);
         if (portalTileEntity != null){
-            return (MAX_SOULS - (portalTileEntity.current_souls * SOUL_MULTIPLIER)) / SOUL_MULTIPLIER;
+            return (MAX_SOULS / SOUL_MULTIPLIER) - portalTileEntity.current_souls;
         }
         return 0;
     }
