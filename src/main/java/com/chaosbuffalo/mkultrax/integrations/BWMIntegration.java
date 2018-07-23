@@ -75,6 +75,7 @@ public class BWMIntegration implements IIntegration {
         MKXItemRegistry.regInternal(HEMP_SEED_BREAD);
 
         Remapper.replace(new ResourceLocation("mkultra:hempseedbread"), HEMP_SEED_BREAD.getRegistryName());
+        Remapper.replace(new ResourceLocation("mkultra:hempseeds"), new ResourceLocation("betterwithmods", "hemp"));
     }
 
     @Override
