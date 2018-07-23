@@ -19,4 +19,8 @@ public interface IIntegration {
     void on_entity_added(Entity entityIn);
 
     void init_items_phase();
+
+    void register_tile_entities();
+
+    void init_blocks_phase();
 }

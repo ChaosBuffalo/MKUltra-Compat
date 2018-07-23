@@ -54,4 +54,14 @@ public class SpartanWeaponryIntegration implements IIntegration {
     public void init_items_phase() {
 
     }
+
+    @Override
+    public void register_tile_entities() {
+
+    }
+
+    @Override
+    public void init_blocks_phase() {
+
+    }
 }

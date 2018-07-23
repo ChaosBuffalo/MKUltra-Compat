@@ -1,6 +1,8 @@
 package com.chaosbuffalo.mkultrax;
 
+import com.chaosbuffalo.mkultrax.init.MKXBlockRegistry;
 import com.chaosbuffalo.mkultrax.init.MKXItemRegistry;
+import com.chaosbuffalo.mkultrax.init.MKXTileRegistry;
 import com.chaosbuffalo.mkultrax.integrations.*;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -26,6 +28,7 @@ public class MKUltraX
     public static BaseMetalsIntegration baseMetals;
     public static SpartanWeaponryIntegration spartanWeaponry;
     public static LootableBodiesIntegration lootableBodiesIntegration;
+    public static BWMIntegration bwmIntegration;
 
     public static final ArrayList<IIntegration> integrations = new ArrayList<>();
 
@@ -37,6 +40,7 @@ public class MKUltraX
         integrations.add(baseMetals = new BaseMetalsIntegration());
         integrations.add(spartanWeaponry = new SpartanWeaponryIntegration());
         integrations.add(lootableBodiesIntegration = new LootableBodiesIntegration());
+        integrations.add(bwmIntegration = new BWMIntegration());
     }
 
     private static Logger logger;
@@ -46,6 +50,8 @@ public class MKUltraX
     {
         logger = event.getModLog();
         MKXItemRegistry.initItems();
+        MKXBlockRegistry.initBlocks();
+        MKXTileRegistry.registerTileEntities();
     }
 
     @EventHandler

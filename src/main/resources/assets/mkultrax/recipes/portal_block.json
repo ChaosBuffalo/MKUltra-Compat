@@ -1,0 +1,29 @@
+{
+  "pattern": [
+    "ouo",
+    "odo",
+    "ooo"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "mod_name": "betterwithmods",
+      "type": "mod_exists"
+    }
+  ],
+  "result": {
+    "item": "mkultrax:portal_block"
+  },
+  "key": {
+    "d": {
+      "item": "minecraft:diamond"
+    },
+    "u": {
+      "item": "betterwithmods:urn",
+      "data": 8
+    },
+    "o": {
+      "item": "minecraft:obsidian"
+    }
+  }
+}
