@@ -62,6 +62,7 @@ public class BWMIntegration implements IIntegration {
         ResourceLocation goldThreadedCloth = new ResourceLocation("mkultra:gold_threaded_cloth");
         IForgeRegistryModifiable modRegistry = (IForgeRegistryModifiable) event.getRegistry();
         modRegistry.remove(goldThreadedCloth);
+        modRegistry.remove(new ResourceLocation("mkultra:iron_threaded_cloth"));
     }
 
     @Override
