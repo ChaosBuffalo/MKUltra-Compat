@@ -192,11 +192,6 @@ public class BaseMetalsIntegration implements IIntegration {
     }
 
     @Override
-    public void on_entity_added(Entity entityIn) {
-
-    }
-
-    @Override
     public void init_items_phase() {
 
         Log.info("Running basemetals item registration");
@@ -328,15 +323,5 @@ public class BaseMetalsIntegration implements IIntegration {
         MKXItemRegistry.regInternal(manaRegenIdolBronze = new ManaRegenIdol(
                 "mana_regen_idol_bronze", .5f, 5, 0, 0, 300)
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
-    }
-
-    @Override
-    public void register_tile_entities() {
-
-    }
-
-    @Override
-    public void init_blocks_phase() {
-
     }
 }

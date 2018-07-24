@@ -59,28 +59,4 @@ public class IceAndFireIntegration implements IIntegration {
 
     }
 
-    @Override
-    public void crafting_register(RegistryEvent.Register<IRecipe> event) {
-
-    }
-
-    @Override
-    public void on_entity_added(Entity entityIn) {
-
-    }
-
-    @Override
-    public void init_items_phase() {
-
-    }
-
-    @Override
-    public void register_tile_entities() {
-
-    }
-
-    @Override
-    public void init_blocks_phase() {
-
-    }
 }

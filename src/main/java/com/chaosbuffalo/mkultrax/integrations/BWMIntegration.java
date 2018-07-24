@@ -65,11 +65,6 @@ public class BWMIntegration implements IIntegration {
     }
 
     @Override
-    public void on_entity_added(Entity entityIn) {
-
-    }
-
-    @Override
     public void init_items_phase() {
         Log.info("BWMIntegration, init_items_phase");
         MKXItemRegistry.regInternal(HEMP_SEED_BREAD);

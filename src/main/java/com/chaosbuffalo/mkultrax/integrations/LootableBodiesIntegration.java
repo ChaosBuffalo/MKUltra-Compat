@@ -45,16 +45,6 @@ public class LootableBodiesIntegration implements IIntegration {
         }
     }
 
-    @Override
-    public void crafting_register(RegistryEvent.Register<IRecipe> event) {
-
-    }
-
-    @Override
-    public void on_entity_added(Entity entityIn) {
-
-    }
-
     public static List<Entity> getLootableBodiesForPlayer(EntityPlayer player) {
 
         World world = player.world;
@@ -102,13 +92,4 @@ public class LootableBodiesIntegration implements IIntegration {
         Remapper.replace(new ResourceLocation("mkultra:phoenix_dust"), phoenix_dust.getRegistryName());
     }
 
-    @Override
-    public void register_tile_entities() {
-
-    }
-
-    @Override
-    public void init_blocks_phase() {
-
-    }
 }

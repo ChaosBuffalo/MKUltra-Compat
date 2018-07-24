@@ -1,6 +1,7 @@
 package com.chaosbuffalo.mkultrax.integrations;
 
 import com.chaosbuffalo.mkultra.core.PlayerAttributes;
+import com.chaosbuffalo.mkultrax.MKXWorldListener;
 import com.lycanitesmobs.core.entity.EntityCreatureBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -27,16 +28,10 @@ public class LycanitesIntegration implements IIntegration {
 
     @Override
     public void mod_init() {
-
+        MKXWorldListener.registerEntityLoadedCallback(LycanitesIntegration::on_entity_added);
     }
 
-    @Override
-    public void crafting_register(RegistryEvent.Register<IRecipe> event) {
-
-    }
-
-    @Override
-    public void on_entity_added(Entity entityIn) {
+    public static void on_entity_added(Entity entityIn) {
         if (entityIn instanceof EntityCreatureBase){
             EntityCreatureBase creature = (EntityCreatureBase) entityIn;
             double scale = creature.getRenderScale();
@@ -47,7 +42,7 @@ public class LycanitesIntegration implements IIntegration {
                             .applyModifier(new AttributeModifier(
                                     UUID.fromString("749d6722-b566-472d-b33c-d3c1b8cd0b8d"),
                                     "Size Health Bonus",
-                                    scale + 1.0, PlayerAttributes.OP_SCALE_MULTIPLICATIVE));
+                                    scale + 2.0, PlayerAttributes.OP_SCALE_MULTIPLICATIVE));
                 }
             }
             double distance2 = creature.getDistanceSq(BlockPos.ORIGIN);
@@ -56,25 +51,11 @@ public class LycanitesIntegration implements IIntegration {
             if (distanceOut > 1.0){
                 int scaleFactor = Math.min((int) distanceOut, MAX_SCALE_ZONES);
                 if (creature.getLevel() < (scaleFactor+2)*LEVEL_SCALING){
-                    creature.addLevel(scaleFactor*LEVEL_SCALING);
+                    creature.addLevel((creature.getRNG().nextInt(scaleFactor*LEVEL_SCALING)));
                 }
 
             }
         }
-    }
-
-    @Override
-    public void init_items_phase() {
-
-    }
-
-    @Override
-    public void register_tile_entities() {
-
-    }
-
-    @Override
-    public void init_blocks_phase() {
 
     }
 }

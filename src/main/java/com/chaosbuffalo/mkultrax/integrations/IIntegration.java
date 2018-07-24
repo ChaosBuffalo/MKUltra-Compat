@@ -12,15 +12,13 @@ public interface IIntegration {
 
     boolean isLoaded();
 
-    void mod_init();
+    default void mod_init(){};
 
-    void crafting_register(RegistryEvent.Register<IRecipe> event);
+    default void crafting_register(RegistryEvent.Register<IRecipe> event){};
 
-    void on_entity_added(Entity entityIn);
+    default void init_items_phase(){};
 
-    void init_items_phase();
+    default void register_tile_entities(){};
 
-    void register_tile_entities();
-
-    void init_blocks_phase();
+    default void init_blocks_phase(){};
 }

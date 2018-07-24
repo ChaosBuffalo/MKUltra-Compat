@@ -1,6 +1,5 @@
 package com.chaosbuffalo.mkultrax;
 
-import com.chaosbuffalo.mkultrax.integrations.IIntegration;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,8 +12,12 @@ import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
+import scala.collection.immutable.Stream;
 
 import javax.annotation.Nullable;
+import java.util.HashSet;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 /**
  * Created by Jacob on 7/21/2018.
@@ -22,6 +25,8 @@ import javax.annotation.Nullable;
 @Mod.EventBusSubscriber(Side.SERVER)
 public class MKXWorldListener implements IWorldEventListener {
     public static MKXWorldListener INSTANCE = new MKXWorldListener();
+
+    private static final HashSet<Consumer<Entity>> ENTITY_LOADED_CALLBACKS = new HashSet<>();
 
 
     public MKXWorldListener(){
@@ -33,6 +38,10 @@ public class MKXWorldListener implements IWorldEventListener {
     public static void onWorldLoad(WorldEvent.Load loadEvent) {
         World world = loadEvent.getWorld();
         world.addEventListener(INSTANCE);
+    }
+
+    public static void registerEntityLoadedCallback(Consumer<Entity> callback){
+        ENTITY_LOADED_CALLBACKS.add(callback);
     }
 
     @Override
@@ -72,10 +81,8 @@ public class MKXWorldListener implements IWorldEventListener {
 
     @Override
     public void onEntityAdded(Entity entityIn) {
-        for (IIntegration integration : MKUltraX.integrations){
-            if (integration.isLoaded()){
-                integration.on_entity_added(entityIn);
-            }
+        for (Consumer<Entity> callback : ENTITY_LOADED_CALLBACKS){
+            callback.accept(entityIn);
         }
     }
 
