@@ -3,9 +3,6 @@ package com.chaosbuffalo.mkultrax.integrations;
 import com.chaosbuffalo.mkultra.event.ItemRestrictionHandler;
 import com.chaosbuffalo.mkultra.utils.ItemUtils;
 import com.oblivioussp.spartanweaponry.item.*;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 
 /**
@@ -38,30 +35,5 @@ public class SpartanWeaponryIntegration implements IIntegration {
         ItemUtils.addCriticalStats(ItemHalberd.class, 1, .1f, 2.0f);
         ItemUtils.addCriticalStats(ItemPike.class, 1, .05f, 2.0f);
         ItemUtils.addCriticalStats(ItemLance.class, 1, .05f, 2.5f);
-    }
-
-    @Override
-    public void crafting_register(RegistryEvent.Register<IRecipe> event) {
-
-    }
-
-    @Override
-    public void on_entity_added(Entity entityIn) {
-
-    }
-
-    @Override
-    public void init_items_phase() {
-
-    }
-
-    @Override
-    public void register_tile_entities() {
-
-    }
-
-    @Override
-    public void init_blocks_phase() {
-
     }
 }
