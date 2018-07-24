@@ -1,11 +1,13 @@
 package com.chaosbuffalo.mkultrax.integrations;
 
 import betterwithmods.common.BWMItems;
+import betterwithmods.common.items.ItemMaterial;
 import betterwithmods.common.items.tools.ItemSoulforgedBattleAxe;
 import betterwithmods.common.items.tools.ItemSoulforgedMattock;
 import betterwithmods.common.items.tools.ItemSteelSaw;
 import com.chaosbuffalo.mkultra.core.ArmorClass;
 import com.chaosbuffalo.mkultra.event.ItemRestrictionHandler;
+import com.chaosbuffalo.mkultra.item.ItemHelper;
 import com.chaosbuffalo.mkultra.utils.ItemUtils;
 import com.chaosbuffalo.mkultrax.MKUltraX;
 import com.chaosbuffalo.mkultrax.blocks.bwm.PortalBlock;
@@ -16,7 +18,6 @@ import net.minecraft.block.material.Material;
 import com.chaosbuffalo.mkultra.init.Remapper;
 import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.init.MKXItemRegistry;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -53,6 +54,7 @@ public class BWMIntegration implements IIntegration {
 
         ItemUtils.addCriticalStats(ItemSoulforgedMattock.class, 1, .05f, 2.0f);
         ItemRestrictionHandler.addShieldRestrictedItem(ItemSoulforgedBattleAxe.class, 0);
+        ItemHelper.registerSMokeable(ItemMaterial.getMaterial(ItemMaterial.EnumMaterial.HEMP));
     }
 
     @Override
