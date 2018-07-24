@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "modid": "betterwithmods",
+      "type": "forge:mod_loaded"
+    }
+  ],
+  "result": {
+    "item": "mkultrax:hemp_seed_bread"
+  },
+  "key": {
+    "w": {
+      "item": "minecraft:wheat"
+    },
+    "h": {
+      "item": "betterwithmods:hemp"
+    }
+  },
+  "pattern": [
+    "whw"
+  ]
+}

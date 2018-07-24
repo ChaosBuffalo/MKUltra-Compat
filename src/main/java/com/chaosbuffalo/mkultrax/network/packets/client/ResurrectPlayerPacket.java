@@ -4,9 +4,9 @@ package com.chaosbuffalo.mkultrax.network.packets.client;
  * Created by Jacob on 7/22/2018.
  */
 import com.chaosbuffalo.mkultra.item.ItemHelper;
-import com.chaosbuffalo.mkultra.log.Log;
 import com.chaosbuffalo.mkultra.network.MessageHandler;
 import com.chaosbuffalo.mkultra.utils.ServerUtils;
+import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.integrations.LootableBodiesIntegration;
 import com.chaosbuffalo.mkultrax.items.lootablebodies.PhoenixDust;
 import io.netty.buffer.ByteBuf;

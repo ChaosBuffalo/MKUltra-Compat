@@ -8,7 +8,7 @@ import com.chaosbuffalo.mkultra.init.ModItems;
 import com.chaosbuffalo.mkultra.item.ItemAttributeArmor;
 import com.chaosbuffalo.mkultra.item.ItemAttributeEntry;
 import com.chaosbuffalo.mkultra.item.ManaRegenIdol;
-import com.chaosbuffalo.mkultra.log.Log;
+import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.MKUltraX;
 import com.chaosbuffalo.mkultrax.init.MKXItemRegistry;
 import com.chaosbuffalo.mkultrax.init.MKXRecipeRegistry;
@@ -186,8 +186,6 @@ public class BaseMetalsIntegration implements IIntegration {
 
 
         CrusherRecipeRegistry.addNewCrusherRecipe(Items.DIAMOND, new ItemStack(ModItems.diamond_dust, 4));
-        CrusherRecipeRegistry.addNewCrusherRecipe(ModItems.hempLeaves,
-                new ItemStack(ModItems.hempFibers, 2));
         CrusherRecipeRegistry.addNewCrusherRecipe(Blocks.OBSIDIAN,
                 new ItemStack(com.mcmoddev.basemetals.init.Materials.getMaterialByName(MaterialNames.OBSIDIAN).getItem(Names.POWDER), 4));
 
