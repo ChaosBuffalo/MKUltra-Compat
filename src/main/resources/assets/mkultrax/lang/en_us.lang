@@ -2,6 +2,12 @@ language.name=English
 language.region=US
 language.code=en_US
 
+entity.javelin_thrown.name=Javelin
+entity.throwing_axe.name=Throwing Axe
+entity.throwing_knife.name=Throwing Knife
+entity.dagger_thrown.name=Dagger
+entity.bolt_spectral.name=Spectral Bolt
+entity.bolt.name=Bolt
 item.steel_infused_bone_leather.name=Steel-Infused Bone Leather
 item.steel_infused_bone_helmet.name=Steel-Infused Bone Hood
 item.steel_infused_bone_leggings.name=Steel-Infused Bone Leggings
