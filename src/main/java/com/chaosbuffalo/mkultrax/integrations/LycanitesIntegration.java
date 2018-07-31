@@ -2,16 +2,18 @@ package com.chaosbuffalo.mkultrax.integrations;
 
 import com.chaosbuffalo.mkultra.core.PlayerAttributes;
 import com.chaosbuffalo.mkultrax.MKXWorldListener;
+import com.chaosbuffalo.targeting_api.Targeting;
 import com.lycanitesmobs.core.entity.EntityCreatureBase;
+import com.lycanitesmobs.elementalmobs.entity.EntityNymph;
+import com.lycanitesmobs.elementalmobs.entity.EntityWisp;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 
 import java.util.UUID;
+import java.util.function.BiFunction;
 
 /**
  * Created by Jacob on 7/21/2018.
@@ -26,8 +28,15 @@ public class LycanitesIntegration implements IIntegration {
         return Loader.isModLoaded("lycanitesmobs");
     }
 
+
     @Override
     public void mod_init() {
+        Targeting.registerFriendlyEntity("com.lycanitesmobs.elementalmobs.entity.EntityNymph");
+        Targeting.registerFriendlyEntity("com.lycanitesmobs.elementalmobs.entity.EntityWisp");
+        BiFunction<Entity, Entity, Boolean> lycanitesWrapper = (caster, target) -> {
+            return Targeting.isValidTarget(Targeting.TargetType.ENEMY, caster, target, true);
+        };
+        com.lycanitesmobs.api.Targeting.registerCallback(lycanitesWrapper);
         MKXWorldListener.registerEntityLoadedCallback(LycanitesIntegration::on_entity_added);
     }
 

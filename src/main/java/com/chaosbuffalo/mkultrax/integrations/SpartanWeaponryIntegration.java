@@ -1,7 +1,9 @@
 package com.chaosbuffalo.mkultrax.integrations;
 
 import com.chaosbuffalo.mkultra.event.ItemRestrictionHandler;
+import com.chaosbuffalo.mkultra.utils.EntityUtils;
 import com.chaosbuffalo.mkultra.utils.ItemUtils;
+import com.oblivioussp.spartanweaponry.entity.projectile.*;
 import com.oblivioussp.spartanweaponry.item.*;
 import net.minecraftforge.fml.common.Loader;
 
@@ -35,5 +37,13 @@ public class SpartanWeaponryIntegration implements IIntegration {
         ItemUtils.addCriticalStats(ItemHalberd.class, 1, .1f, 2.0f);
         ItemUtils.addCriticalStats(ItemPike.class, 1, .05f, 2.0f);
         ItemUtils.addCriticalStats(ItemLance.class, 1, .05f, 2.5f);
+
+        EntityUtils.addCriticalStats(EntityThrownWeapon.class, 1, .05f, 3.0f);
+        EntityUtils.addCriticalStats(EntityThrownJavelin.class, 2, .15f, 3.0f);
+        EntityUtils.addCriticalStats(EntityThrowingAxe.class, 2, .1f, 3.5f);
+        EntityUtils.addCriticalStats(EntityThrowingKnife.class, 2, .2f, 2.5f);
+        EntityUtils.addCriticalStats(EntityBolt.class, 1, .2f, 3.0f);
+        EntityUtils.addCriticalStats(EntityBoltTipped.class, 2, .2f, 3.0f);
+        EntityUtils.addCriticalStats(EntityBoltSpectral.class, 2, .25f, 3.0f);
     }
 }
