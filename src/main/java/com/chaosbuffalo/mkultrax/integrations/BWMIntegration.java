@@ -1,12 +1,13 @@
 package com.chaosbuffalo.mkultrax.integrations;
 
 import betterwithmods.common.BWMItems;
+import betterwithmods.common.BWRegistry;
 import betterwithmods.common.items.ItemMaterial;
 import betterwithmods.common.items.tools.ItemSoulforgedBattleAxe;
 import betterwithmods.common.items.tools.ItemSoulforgedMattock;
-import betterwithmods.common.items.tools.ItemSteelSaw;
 import com.chaosbuffalo.mkultra.core.ArmorClass;
 import com.chaosbuffalo.mkultra.event.ItemRestrictionHandler;
+import com.chaosbuffalo.mkultra.init.ModItems;
 import com.chaosbuffalo.mkultra.item.ItemHelper;
 import com.chaosbuffalo.mkultra.utils.ItemUtils;
 import com.chaosbuffalo.mkultrax.MKUltraX;
@@ -18,9 +19,11 @@ import net.minecraft.block.material.Material;
 import com.chaosbuffalo.mkultra.init.Remapper;
 import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.init.MKXItemRegistry;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -43,18 +46,17 @@ public class BWMIntegration implements IIntegration {
 
     @Override
     public void mod_init() {
-        Log.info("BWMIntegration, mod_init");
-
         ArmorClass.ROBES.register(((ItemArmor) BWMItems.WOOL_CHEST).getArmorMaterial());
-
         ArmorClass.LIGHT.register(((ItemArmor) BWMItems.LEATHER_TANNED_CHEST).getArmorMaterial());
-
         ArmorClass.HEAVY.register(((ItemArmor) BWMItems.STEEL_CHEST).getArmorMaterial());
-
 
         ItemUtils.addCriticalStats(ItemSoulforgedMattock.class, 1, .05f, 2.0f);
         ItemRestrictionHandler.addShieldRestrictedItem(ItemSoulforgedBattleAxe.class, 0);
         ItemHelper.registerSMokeable(ItemMaterial.getMaterial(ItemMaterial.EnumMaterial.HEMP));
+
+        if (!MKUltraX.baseMetals.isLoaded()){
+            BWRegistry.MILLSTONE.addMillRecipe(new ItemStack(Items.DIAMOND), new ItemStack(ModItems.diamond_dust, 4));
+        }
     }
 
     @Override
@@ -69,7 +71,6 @@ public class BWMIntegration implements IIntegration {
 
     @Override
     public void init_items_phase() {
-        Log.info("BWMIntegration, init_items_phase");
         MKXItemRegistry.regInternal(HEMP_SEED_BREAD);
 
         Remapper.replace(new ResourceLocation("mkultra:hempseedbread"), HEMP_SEED_BREAD.getRegistryName());
