@@ -24,6 +24,12 @@ public class PortalTileEntity extends TileEntity {
     }
 
     @Override
+    public NBTTagCompound getUpdateTag()
+    {
+        return this.writeToNBT(new NBTTagCompound());
+    }
+
+    @Override
     public SPacketUpdateTileEntity getUpdatePacket() {
         NBTTagCompound nbtTag = this.serializeNBT();
         return new SPacketUpdateTileEntity(this.pos, 0, nbtTag);
@@ -44,6 +50,9 @@ public class PortalTileEntity extends TileEntity {
         current_souls += value;
         if (current_souls > 0){
             is_powered = true;
+        } else {
+            current_souls = 0;
+            is_powered = false;
         }
         sync();
     }
@@ -59,7 +68,6 @@ public class PortalTileEntity extends TileEntity {
 
     protected final void sync() {
         this.markDirty();
-        //this.getWorld().markBlockForUpdate(getPos());
         Packet<?> packet = this.getUpdatePacket();
         if (packet == null) return;
         List<EntityPlayerMP> players = this.getWorld().getPlayers(EntityPlayerMP.class, (EntityPlayerMP p) -> p.getPosition().distanceSq(getPos()) < 256);

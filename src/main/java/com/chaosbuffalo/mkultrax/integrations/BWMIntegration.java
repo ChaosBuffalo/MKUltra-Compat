@@ -14,6 +14,7 @@ import com.chaosbuffalo.mkultrax.MKUltraX;
 import com.chaosbuffalo.mkultrax.blocks.bwm.PortalBlock;
 import com.chaosbuffalo.mkultrax.init.MKXBlockRegistry;
 import com.chaosbuffalo.mkultrax.tiles.bwm.PortalTileEntity;
+import com.chaosbuffalo.mkultrax.utils.IntegrationUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import com.chaosbuffalo.mkultra.init.Remapper;
@@ -54,7 +55,7 @@ public class BWMIntegration implements IIntegration {
         ItemRestrictionHandler.addShieldRestrictedItem(ItemSoulforgedBattleAxe.class, 0);
         ItemHelper.registerSMokeable(ItemMaterial.getMaterial(ItemMaterial.EnumMaterial.HEMP));
 
-        if (!MKUltraX.baseMetals.isLoaded()){
+        if (!IntegrationUtils.isBaseMetalsPresent()){
             BWRegistry.MILLSTONE.addMillRecipe(new ItemStack(Items.DIAMOND), new ItemStack(ModItems.diamond_dust, 4));
         }
     }
