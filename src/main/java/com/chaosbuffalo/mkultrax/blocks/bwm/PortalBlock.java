@@ -31,8 +31,6 @@ import java.util.Random;
  * Created by Jacob on 7/22/2018.
  */
 public class PortalBlock extends Block implements ISoulSensitive, ITileEntityProvider {
-
-    public static final int COST_SCALE = 1;
     public static final int SOUL_MULTIPLIER = 50;
     public static final int MAX_SOULS = 10000;
 
@@ -82,7 +80,12 @@ public class PortalBlock extends Block implements ISoulSensitive, ITileEntityPro
         int yDist = upVal - downVal;
         int xDist = eastVal - westVal;
         int zDist = northVal - southVal;
-        int cost = (Math.abs(xDist) + Math.abs(yDist) + Math.abs(zDist)) * COST_SCALE;
+        int cost = (Math.abs(xDist) + Math.abs(yDist) + Math.abs(zDist));
+        boolean greaterT = cost > 0;
+        cost = cost / SOUL_MULTIPLIER;
+        if (cost <= 0 && greaterT){
+            cost = 1;
+        }
         return cost;
     }
 
@@ -185,7 +188,7 @@ public class PortalBlock extends Block implements ISoulSensitive, ITileEntityPro
             if (portalEntity != null && portalEntity.is_powered){
                 int cost = calculateCost(world, pos);
                 Log.info(String.format("trying to activate portal entity %d, %d", cost, portalEntity.current_souls));
-                if (portalEntity.current_souls >= cost){
+                if (portalEntity.current_souls >= cost && cost > 0){
                     portalEntity.subtractSouls(cost);
                     Vec3i dist = calculateDistance(world, pos);
                     player.setPositionAndUpdate(pos.getX() + dist.getX(), pos.getY() + dist.getY(),
@@ -206,7 +209,7 @@ public class PortalBlock extends Block implements ISoulSensitive, ITileEntityPro
     public int getMaximumSoulIntake(IBlockAccess iBlockAccess, BlockPos blockPos) {
         PortalTileEntity portalTileEntity = (PortalTileEntity) iBlockAccess.getTileEntity(blockPos);
         if (portalTileEntity != null){
-            return (MAX_SOULS / SOUL_MULTIPLIER) - portalTileEntity.current_souls;
+            return MAX_SOULS  - portalTileEntity.current_souls;
         }
         return 0;
     }
@@ -220,7 +223,7 @@ public class PortalBlock extends Block implements ISoulSensitive, ITileEntityPro
     public boolean consumeSouls(World world, BlockPos blockPos, int souls) {
         PortalTileEntity portalEntity = (PortalTileEntity) world.getTileEntity(blockPos);
         if (portalEntity != null){
-            portalEntity.addSouls(souls * SOUL_MULTIPLIER);
+            portalEntity.addSouls(souls);
             return souls > 0;
         }
         return false;

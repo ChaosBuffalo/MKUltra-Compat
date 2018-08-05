@@ -12,6 +12,7 @@ import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.MKUltraX;
 import com.chaosbuffalo.mkultrax.init.MKXItemRegistry;
 import com.chaosbuffalo.mkultrax.init.MKXRecipeRegistry;
+import com.chaosbuffalo.mkultrax.utils.IntegrationUtils;
 import com.mcmoddev.basemetals.data.MaterialNames;
 import com.mcmoddev.basemetals.init.Materials;
 import com.mcmoddev.lib.data.Names;
@@ -130,7 +131,8 @@ public class BaseMetalsIntegration implements IIntegration {
                 .register(Materials.getArmorMaterialFor(Materials.getMaterialByName(MaterialNames.BRONZE)))
                 .register(DIAMOND_DUSTED_INVAR_MAT);
 
-        if (MKUltraX.bwmIntegration.isLoaded()){
+
+        if (IntegrationUtils.isBWMPresent()){
             for (ICrusherRecipe recipe : CrusherRecipeRegistry.getAll()){
                 for (ItemStack input : recipe.getInputs()){
                     BWRegistry.MILLSTONE.addMillRecipe(input, recipe.getOutput());

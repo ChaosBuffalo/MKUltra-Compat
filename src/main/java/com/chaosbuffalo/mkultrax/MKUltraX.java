@@ -4,6 +4,7 @@ import com.chaosbuffalo.mkultrax.init.MKXBlockRegistry;
 import com.chaosbuffalo.mkultrax.init.MKXItemRegistry;
 import com.chaosbuffalo.mkultrax.init.MKXTileRegistry;
 import com.chaosbuffalo.mkultrax.integrations.*;
+import com.chaosbuffalo.mkultrax.utils.IntegrationUtils;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -14,12 +15,12 @@ import java.util.ArrayList;
 
 @Mod(modid = MKUltraX.MODID, name = MKUltraX.NAME, version = MKUltraX.VERSION,
         dependencies="required-after:mkultra;after:thebetweenlands;after:iceandfire;after:lycanitesmobs;after:astralsorcery;" +
-                "after:basemetals;after:poweradvantage;after:betterwithmods")
+                "after:basemetals;after:poweradvantage;after:betterwithmods;required-after:targeting_api")
 public class MKUltraX
 {
     public static final String MODID = "mkultrax";
     public static final String NAME = "MK Ultra Compat";
-    public static final String VERSION = "0.02";
+    public static final String VERSION = "0.04";
 
     public static BetweenlandsIntegration betweenLands;
     public static IceAndFireIntegration iceAndFire;
@@ -33,14 +34,30 @@ public class MKUltraX
     public static final ArrayList<IIntegration> integrations = new ArrayList<>();
 
     static {
-        integrations.add(betweenLands = new BetweenlandsIntegration());
-        integrations.add(iceAndFire = new IceAndFireIntegration());
-        integrations.add(lycanites = new LycanitesIntegration());
-        integrations.add(astralSorcery = new AstralSorceryIntegration());
-        integrations.add(baseMetals = new BaseMetalsIntegration());
-        integrations.add(spartanWeaponry = new SpartanWeaponryIntegration());
-        integrations.add(lootableBodiesIntegration = new LootableBodiesIntegration());
-        integrations.add(bwmIntegration = new BWMIntegration());
+        if (IntegrationUtils.isBetweenlandsPresent()){
+            integrations.add(betweenLands = new BetweenlandsIntegration());
+        }
+        if (IntegrationUtils.isAstralSorceryPresent()){
+            integrations.add(astralSorcery = new AstralSorceryIntegration());
+        }
+        if (IntegrationUtils.isBaseMetalsPresent()){
+            integrations.add(baseMetals = new BaseMetalsIntegration());
+        }
+        if (IntegrationUtils.isBWMPresent()){
+            integrations.add(bwmIntegration = new BWMIntegration());
+        }
+        if (IntegrationUtils.isIceAndFirePresent()){
+            integrations.add(iceAndFire = new IceAndFireIntegration());
+        }
+        if (IntegrationUtils.isLycantesPresent()){
+            integrations.add(lycanites = new LycanitesIntegration());
+        }
+        if (IntegrationUtils.isSpartanWeaponryPresent()){
+            integrations.add(spartanWeaponry = new SpartanWeaponryIntegration());
+        }
+        if (IntegrationUtils.isLycantesPresent()){
+            integrations.add(lootableBodiesIntegration = new LootableBodiesIntegration());
+        }
     }
 
     public static Logger LOG;
