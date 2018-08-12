@@ -5,11 +5,15 @@ import betterwithmods.common.BWRegistry;
 import betterwithmods.common.items.ItemMaterial;
 import betterwithmods.common.items.tools.ItemSoulforgedBattleAxe;
 import betterwithmods.common.items.tools.ItemSoulforgedMattock;
+import com.chaosbuffalo.mkultra.GameConstants;
 import com.chaosbuffalo.mkultra.core.ArmorClass;
+import com.chaosbuffalo.mkultra.effects.spells.HellfireSmoke;
+import com.chaosbuffalo.mkultra.effects.spells.ManaRegenSmokeEffect;
 import com.chaosbuffalo.mkultra.event.ItemRestrictionHandler;
 import com.chaosbuffalo.mkultra.init.ModItems;
 import com.chaosbuffalo.mkultra.item.ItemHelper;
 import com.chaosbuffalo.mkultra.utils.ItemUtils;
+import com.chaosbuffalo.mkultra.utils.SmokeUtils;
 import com.chaosbuffalo.mkultrax.MKUltraX;
 import com.chaosbuffalo.mkultrax.blocks.bwm.PortalBlock;
 import com.chaosbuffalo.mkultrax.init.MKXBlockRegistry;
@@ -53,7 +57,11 @@ public class BWMIntegration implements IIntegration {
 
         ItemUtils.addCriticalStats(ItemSoulforgedMattock.class, 1, .05f, 2.0f);
         ItemRestrictionHandler.addShieldRestrictedItem(ItemSoulforgedBattleAxe.class, 0);
-        ItemHelper.registerSMokeable(ItemMaterial.getMaterial(ItemMaterial.EnumMaterial.HEMP));
+
+        SmokeUtils.registerSmokeable(ItemMaterial.getMaterial(ItemMaterial.EnumMaterial.HEMP),
+                ManaRegenSmokeEffect.INSTANCE, 10*GameConstants.TICKS_PER_SECOND, 1);
+        SmokeUtils.registerSmokeable(ItemMaterial.getMaterial(ItemMaterial.EnumMaterial.HELLFIRE_DUST),
+                HellfireSmoke.INSTANCE, 10*GameConstants.TICKS_PER_SECOND, 1);
 
         if (!IntegrationUtils.isBaseMetalsPresent()){
             BWRegistry.MILLSTONE.addMillRecipe(new ItemStack(Items.DIAMOND), new ItemStack(ModItems.diamond_dust, 4));

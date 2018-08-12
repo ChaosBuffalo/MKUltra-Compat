@@ -61,6 +61,8 @@ public class LycanitesIntegration implements IIntegration {
                 int scaleFactor = Math.min((int) distanceOut, MAX_SCALE_ZONES);
                 if (creature.getLevel() < (scaleFactor+2)*LEVEL_SCALING){
                     creature.addLevel((creature.getRNG().nextInt(scaleFactor*LEVEL_SCALING)));
+
+
                 }
 
             }
