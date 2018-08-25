@@ -25,31 +25,6 @@ public class IceAndFireIntegration implements IIntegration {
 
     @Override
     public void mod_init() {
-        ArmorClass.HEAVY
-                .register(EnumDragonArmor.armor_blue.armorMaterial)
-                .register(EnumDragonArmor.armor_bronze.armorMaterial)
-                .register(EnumDragonArmor.armor_gray.armorMaterial)
-                .register(EnumDragonArmor.armor_green.armorMaterial)
-                .register(EnumDragonArmor.armor_red.armorMaterial)
-                .register(EnumDragonArmor.armor_sapphire.armorMaterial)
-                .register(EnumDragonArmor.armor_silver.armorMaterial)
-                .register(EnumDragonArmor.armor_white.armorMaterial)
-                .register(ModItems.silverMetal);
-
-        ArmorClass.MEDIUM
-                .register(ModItems.red_deathworm)
-                .register(ModItems.white_deathworm)
-                .register(ModItems.yellow_deathworm);
-
-        ArmorClass.LIGHT
-                .register(ModItems.troll_forest)
-                .register(ModItems.troll_frost)
-                .register(ModItems.troll_mountain);
-
-        ArmorClass.ROBES
-                .register(ModItems.blindfoldArmor)
-                .register(ModItems.earplugsArmor)
-                .register(ModItems.sheep);
 
         ItemUtils.addCriticalStats(ItemAlchemySword.class, 1, .1f, 2.25f);
         ItemUtils.addCriticalStats(ItemTrollWeapon.class, 1, .05f, 3.0f);

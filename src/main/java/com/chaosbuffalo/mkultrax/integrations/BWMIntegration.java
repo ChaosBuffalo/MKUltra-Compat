@@ -51,9 +51,6 @@ public class BWMIntegration implements IIntegration {
 
     @Override
     public void mod_init() {
-        ArmorClass.ROBES.register(((ItemArmor) BWMItems.WOOL_CHEST).getArmorMaterial());
-        ArmorClass.LIGHT.register(((ItemArmor) BWMItems.LEATHER_TANNED_CHEST).getArmorMaterial());
-        ArmorClass.HEAVY.register(((ItemArmor) BWMItems.STEEL_CHEST).getArmorMaterial());
 
         ItemUtils.addCriticalStats(ItemSoulforgedMattock.class, 1, .05f, 2.0f);
         ItemRestrictionHandler.addShieldRestrictedItem(ItemSoulforgedBattleAxe.class, 0);

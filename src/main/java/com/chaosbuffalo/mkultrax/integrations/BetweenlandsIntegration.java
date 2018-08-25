@@ -19,19 +19,7 @@ public class BetweenlandsIntegration implements IIntegration {
 
     @Override
     public void mod_init() {
-        ArmorClass.HEAVY
-                .register(BLMaterialRegistry.ARMOR_VALONITE);
 
-        ArmorClass.ROBES
-                .register(BLMaterialRegistry.ARMOR_RUBBER)
-                .register(BLMaterialRegistry.ARMOR_BL_CLOTH)
-                .register(BLMaterialRegistry.ARMOR_LURKER_SKIN);
-
-        ArmorClass.LIGHT
-                .register(BLMaterialRegistry.ARMOR_BONE);
-
-        ArmorClass.MEDIUM
-                .register(BLMaterialRegistry.ARMOR_SYRMORITE);
     }
 
 }

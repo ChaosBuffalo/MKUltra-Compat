@@ -14,13 +14,13 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 
 @Mod(modid = MKUltraX.MODID, name = MKUltraX.NAME, version = MKUltraX.VERSION,
-        dependencies="required-after:mkultra@[0.76];after:thebetweenlands;after:iceandfire;after:lycanitesmobs;after:astralsorcery;" +
+        dependencies="required-after:mkultra@[0.76,);after:thebetweenlands;after:iceandfire;after:lycanitesmobs;after:astralsorcery;" +
                 "after:basemetals;after:poweradvantage;after:betterwithmods;required-after:targeting_api")
 public class MKUltraX
 {
     public static final String MODID = "mkultrax";
     public static final String NAME = "MK Ultra Compat";
-    public static final String VERSION = "0.05";
+    public static final String VERSION = "0.06";
 
     public static BetweenlandsIntegration betweenLands;
     public static IceAndFireIntegration iceAndFire;

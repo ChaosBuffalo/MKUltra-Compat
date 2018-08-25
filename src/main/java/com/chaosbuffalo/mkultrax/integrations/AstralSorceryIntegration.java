@@ -31,6 +31,5 @@ public class AstralSorceryIntegration implements IIntegration {
         ItemRestrictionHandler.addShieldRestrictedItem(ItemChargedCrystalAxe.class, 1);
         ItemRestrictionHandler.addShieldRestrictedItem(ItemChargedCrystalSword.class, 1);
         ItemUtils.addCriticalStats(ItemCrystalAxe.class, 1, .15f, 2.0f);
-        ArmorClass.ROBES.register(RegistryItems.imbuedLeatherMaterial);
     }
 }

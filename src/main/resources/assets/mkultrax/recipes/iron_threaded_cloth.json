@@ -1,10 +1,16 @@
 {
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "modid": "betterwithmods",
+      "type": "forge:mod_loaded"
+    }
+  ],
   "pattern": [
     "www",
     "wcw",
     "www"
   ],
-  "type": "minecraft:crafting_shaped",
   "result": {
     "count": 9,
     "item": "mkultra:iron_threaded_cloth"
