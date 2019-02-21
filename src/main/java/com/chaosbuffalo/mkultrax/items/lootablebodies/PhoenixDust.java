@@ -21,7 +21,7 @@ public class PhoenixDust extends Item {
 
     public PhoenixDust(String unlocalizedName) {
         super();
-        this.setUnlocalizedName(unlocalizedName);
+        this.setTranslationKey(unlocalizedName);
         this.setCreativeTab(MKUltra.MKULTRA_TAB);
     }
 

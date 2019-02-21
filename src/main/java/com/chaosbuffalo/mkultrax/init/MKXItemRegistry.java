@@ -26,19 +26,19 @@ public class MKXItemRegistry {
     private static final Set<Item> ALL_ITEMS = new HashSet<>();
 
     public static void regInternal(Item item, String pathName, String modId) {
-        item.setUnlocalizedName(pathName);
         item.setRegistryName(modId, pathName);
+        item.setTranslationKey(pathName);
         ALL_ITEMS.add(item);
     }
 
     public static void regInternal(Item item){
-        item.setRegistryName(MKUltraX.MODID, item.getUnlocalizedName().substring(5));
+        item.setRegistryName(MKUltraX.MODID, item.getTranslationKey());
         ALL_ITEMS.add(item);
     }
 
     public static void regInternal(Item item, ResourceLocation location) {
-        item.setUnlocalizedName(location.getResourcePath());
         item.setRegistryName(location);
+        item.setTranslationKey(location.getPath());
         ALL_ITEMS.add(item);
     }
 

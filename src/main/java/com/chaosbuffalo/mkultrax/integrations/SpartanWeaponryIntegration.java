@@ -36,6 +36,8 @@ public class SpartanWeaponryIntegration implements IIntegration {
         ItemUtils.addCriticalStats(ItemHalberd.class, 1, .1f, 2.0f);
         ItemUtils.addCriticalStats(ItemPike.class, 1, .05f, 2.0f);
         ItemUtils.addCriticalStats(ItemLance.class, 1, .05f, 2.5f);
+        ItemUtils.addCriticalStats(ItemBattleaxe.class, 1, .05f, 3.0f);
+        ItemUtils.addCriticalStats(ItemMace.class, 1, .15f, 2.5f);
 
         EntityUtils.addCriticalStats(EntityThrownWeapon.class, 1, .05f, 3.0f);
         EntityUtils.addCriticalStats(EntityThrownJavelin.class, 2, .15f, 3.0f);
@@ -44,5 +46,6 @@ public class SpartanWeaponryIntegration implements IIntegration {
         EntityUtils.addCriticalStats(EntityBolt.class, 1, .05f, 3.0f);
         EntityUtils.addCriticalStats(EntityBoltTipped.class, 2, .05f, 3.0f);
         EntityUtils.addCriticalStats(EntityBoltSpectral.class, 2, .1f, 3.0f);
+        EntityUtils.addCriticalStats(EntityBoomerang.class, 2, .1f, 3.0f);
     }
 }

@@ -1,0 +1,10 @@
+{
+  "type": "com.lycanitesmobs.mountainmobs.entity.EntityBeholder",
+  "name": "Test Beholder",
+  "custom_modifiers": [
+    {
+      "setter": "mkultrax:set_subspecies",
+      "subspecies_index": 1
+    }
+  ]
+}

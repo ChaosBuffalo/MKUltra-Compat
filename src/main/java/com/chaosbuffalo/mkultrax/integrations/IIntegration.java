@@ -24,4 +24,11 @@ public interface IIntegration {
 
     default void init_blocks_phase() {
     }
+
+    default void init_custom_setters_phase(){
+    }
+
+    default void init_attribute_setters_phase(){
+
+    }
 }

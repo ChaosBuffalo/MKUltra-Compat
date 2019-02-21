@@ -1,0 +1,8 @@
+{
+  "RANGE_CAPTAIN": [
+    {
+      "spawn_list": "mkultrax:test_beholders",
+      "weight": 1.0
+    }
+  ]
+}

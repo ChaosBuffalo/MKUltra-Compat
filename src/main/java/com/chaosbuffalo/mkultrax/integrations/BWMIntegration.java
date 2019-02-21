@@ -1,17 +1,14 @@
 package com.chaosbuffalo.mkultrax.integrations;
 
-import betterwithmods.common.BWMItems;
 import betterwithmods.common.BWRegistry;
 import betterwithmods.common.items.ItemMaterial;
 import betterwithmods.common.items.tools.ItemSoulforgedBattleAxe;
 import betterwithmods.common.items.tools.ItemSoulforgedMattock;
 import com.chaosbuffalo.mkultra.GameConstants;
-import com.chaosbuffalo.mkultra.core.ArmorClass;
 import com.chaosbuffalo.mkultra.effects.spells.HellfireSmoke;
 import com.chaosbuffalo.mkultra.effects.spells.ManaRegenSmokeEffect;
 import com.chaosbuffalo.mkultra.event.ItemRestrictionHandler;
 import com.chaosbuffalo.mkultra.init.ModItems;
-import com.chaosbuffalo.mkultra.item.ItemHelper;
 import com.chaosbuffalo.mkultra.utils.ItemUtils;
 import com.chaosbuffalo.mkultra.utils.SmokeUtils;
 import com.chaosbuffalo.mkultrax.MKUltraX;
@@ -25,7 +22,6 @@ import com.chaosbuffalo.mkultra.init.Remapper;
 import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.init.MKXItemRegistry;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -42,7 +38,9 @@ import net.minecraftforge.registries.IForgeRegistryModifiable;
 public class BWMIntegration implements IIntegration {
     public static Block portalBlock;
 
-    public static Item HEMP_SEED_BREAD = new ItemFood(7, 8.0f, false).setUnlocalizedName("hemp_seed_bread");
+    public static Item HEMP_SEED_BREAD = new ItemFood(7, 8.0f, false)
+            .setRegistryName(MKUltraX.MODID, "hemp_seed_bread")
+            .setTranslationKey("hemp_seed_bread");
 
     @Override
     public boolean isLoaded() {
