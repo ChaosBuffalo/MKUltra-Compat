@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-version = "0.07"
+version = "${mod_version}"
 group = "com.chaosbuffalo.mkultrax" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "mkultra-compat"
 
@@ -21,7 +21,7 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.5.2811"
+    version = "${forgemc_version}-${forge_version}"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.
@@ -29,11 +29,17 @@ minecraft {
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not always work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "stable_39"
+    mappings = "${mappings_version}"
+    replace "@VERSION@", project.version
+    replaceIn "MKultraX.java"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
 repositories {
+    maven { url "http://blamejared.com/maven" }
+    maven { url 'http://dvs1.progwml6.com/files/maven' }
+    maven { url "http://www.ryanliptak.com/maven/" }
+    maven { url "http://maven.amadornes.com/" }
     maven {
         name = 'CurseForge'
         url = 'https://minecraft.curseforge.com/api/maven/'
@@ -46,7 +52,12 @@ repositories {
 
 dependencies {
     deobfCompile 'ice-and-fire-dragons:iceandfire:1.6.1:1.12.2'
+    deobfCompile "betterwithmods:BetterWithMods:1.12-2.3.20-1030"
     deobfCompile "spartan-weaponry:SpartanWeaponry-1.12.2:beta:1.2.3"
+    deobfProvided "com.mcmoddev:OreSpawn:${mc_version}-${orespawn_version}"
+    runtime "com.mcmoddev:OreSpawn:${mc_version}-${orespawn_version}"
+    deobfProvided "com.mcmoddev:BaseMetals:${mc_version}-${bme_version}"
+    runtime "com.mcmoddev:BaseMetals:${mc_version}-${bme_version}"
     compile fileTree(dir: 'libs', include: '*.jar')
 }
 

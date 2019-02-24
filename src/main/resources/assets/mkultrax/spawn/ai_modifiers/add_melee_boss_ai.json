@@ -5,7 +5,7 @@
       "min_level": 0,
       "priority": 4,
       "task_type": "TASK",
-      "generator": "mkultra:beneficial_spells"
+      "generator": "mkultra:no_strafe_buffs"
     },
     {
       "min_level": 0,
