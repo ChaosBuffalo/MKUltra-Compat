@@ -14,9 +14,11 @@ import com.chaosbuffalo.mkultrax.init.MKXSpawnRegistry;
 import com.chaosbuffalo.targeting_api.Targeting;
 import com.google.gson.JsonObject;
 import com.lycanitesmobs.core.entity.EntityCreatureBase;
+import com.lycanitesmobs.core.entity.ai.EntityAITargetAttack;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAITasks;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -42,14 +44,42 @@ public class LycanitesIntegration implements IIntegration {
     @Override
     public void init_attribute_setters_phase(){
         BiConsumer<EntityLivingBase, AttributeRange> level_setter = (entity, range) -> {
-            double creatureLevel = MathUtils.lerp_double(range.start, range.stop, range.level, range.maxLevel);
+            double creatureLevel = MathUtils.lerp_double(range.start, range.stop,
+                    range.level, range.maxLevel);
             if (entity instanceof EntityCreatureBase){
                 EntityCreatureBase creature = (EntityCreatureBase)entity;
                 creature.applyLevel((int) creatureLevel);
             }
         };
-        AttributeSetter lycanites_level = new AttributeSetter(MKUltraX.MODID, "lycanites_level", level_setter);
+        AttributeSetter lycanites_level = new AttributeSetter(MKUltraX.MODID,
+                "lycanites_level", level_setter);
         MKXSpawnRegistry.regInternalAttributeSetter(lycanites_level);
+        BiConsumer<EntityLivingBase, AttributeRange> attack_range_setter = (entity, range) -> {
+          if (entity instanceof EntityCreatureBase){
+              EntityCreatureBase creature = (EntityCreatureBase)entity;
+              for (EntityAITasks.EntityAITaskEntry task : creature.targetTasks.taskEntries){
+                  if (EntityAITargetAttack.class.isAssignableFrom(task.action.getClass())){
+                      EntityAITargetAttack targetTask = (EntityAITargetAttack) task.action;
+                      targetTask.setRange(MathUtils.lerp_double(range.start, range.stop, range.level,
+                              range.maxLevel));
+                  }
+              }
+          }
+        };
+        AttributeSetter lycanites_target_range = new AttributeSetter(MKUltraX.MODID,
+                "lycanites_aggro_range", attack_range_setter);
+        MKXSpawnRegistry.regInternalAttributeSetter(lycanites_target_range);
+        BiConsumer<EntityLivingBase, AttributeRange> size_setter = (entity, range) -> {
+            if (entity instanceof EntityCreatureBase){
+                EntityCreatureBase creature = (EntityCreatureBase)entity;
+                creature.setSizeScale(MathUtils.lerp_double(range.start, range.stop,
+                        range.level, range.maxLevel));
+            }
+        };
+        AttributeSetter lycanites_mob_size = new AttributeSetter(MKUltraX.MODID,
+                "lycanites_size_scale", size_setter);
+        MKXSpawnRegistry.regInternalAttributeSetter(lycanites_mob_size);
+
     }
 
     @Override
@@ -91,32 +121,31 @@ public class LycanitesIntegration implements IIntegration {
     }
 
     public static void on_entity_added(Entity entityIn) {
-        if (entityIn instanceof EntityCreatureBase){
-            EntityCreatureBase creature = (EntityCreatureBase) entityIn;
-            double scale = creature.getRenderScale();
-            if (scale > 1.0){
-                AttributeModifier modifier = creature.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).getModifier(UUID.fromString("749d6722-b566-472d-b33c-d3c1b8cd0b8d"));
-                if (modifier == null){
-                    creature.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)
-                            .applyModifier(new AttributeModifier(
-                                    UUID.fromString("749d6722-b566-472d-b33c-d3c1b8cd0b8d"),
-                                    "Size Health Bonus",
-                                    scale + 2.0, PlayerAttributes.OP_SCALE_MULTIPLICATIVE));
-                }
-            }
-            double distance2 = creature.getDistanceSq(BlockPos.ORIGIN);
-
-            double distanceOut = distance2 / (DISTANCE_SCALING * DISTANCE_SCALING);
-            if (distanceOut > 1.0){
-                int scaleFactor = Math.min((int) distanceOut, MAX_SCALE_ZONES);
-                if (creature.getLevel() < (scaleFactor+2)*LEVEL_SCALING){
-                    creature.addLevel((creature.getRNG().nextInt(scaleFactor*LEVEL_SCALING)));
-
-
-                }
-
-            }
-        }
-
+//        if (entityIn instanceof EntityCreatureBase){
+//            EntityCreatureBase creature = (EntityCreatureBase) entityIn;
+//            double scale = creature.getRenderScale();
+//            if (scale > 1.0){
+//                AttributeModifier modifier = creature.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).getModifier(UUID.fromString("749d6722-b566-472d-b33c-d3c1b8cd0b8d"));
+//                if (modifier == null){
+//                    creature.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)
+//                            .applyModifier(new AttributeModifier(
+//                                    UUID.fromString("749d6722-b566-472d-b33c-d3c1b8cd0b8d"),
+//                                    "Size Health Bonus",
+//                                    scale + 2.0, PlayerAttributes.OP_SCALE_MULTIPLICATIVE));
+//                }
+//            }
+//            double distance2 = creature.getDistanceSq(BlockPos.ORIGIN);
+//
+//            double distanceOut = distance2 / (DISTANCE_SCALING * DISTANCE_SCALING);
+//            if (distanceOut > 1.0){
+//                int scaleFactor = Math.min((int) distanceOut, MAX_SCALE_ZONES);
+//                if (creature.getLevel() < (scaleFactor+2)*LEVEL_SCALING){
+//                    creature.addLevel((creature.getRNG().nextInt(scaleFactor*LEVEL_SCALING)));
+//
+//
+//                }
+//
+//            }
+//        }
     }
 }

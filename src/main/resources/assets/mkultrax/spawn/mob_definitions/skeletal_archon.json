@@ -1,0 +1,27 @@
+{
+  "type": "net.minecraft.entity.monster.EntitySkeleton",
+  "name": "Skeletal Archon",
+  "attributes": [
+    "mkultrax:boss_health",
+    "mkultrax:ranged_aggro",
+    "mkultrax:follow_range",
+    "mkultrax:boss_knockback_resist"
+  ],
+  "item_options": [
+    "mkultrax:archon_helm",
+    "mkultrax:archon_chest",
+    "mkultrax:iron_cleric_weapons",
+    "mkultrax:shield"
+  ],
+  "abilities": [
+    "mkultra:mob_ability.flamewave",
+    "mkultra:mob_ability.triple_fireball",
+    "mkultra:mob_ability.mana_burn",
+    "mkultra:mob_ability.full_heal",
+    "mkultra:mob_ability.heal"
+  ],
+  "ai_modifiers": [
+    "mkultrax:remove_skeleton_ai",
+    "mkultrax:add_standard_ai"
+  ]
+}

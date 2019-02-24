@@ -32,7 +32,7 @@ public class MKXItemRegistry {
     }
 
     public static void regInternal(Item item){
-        item.setRegistryName(MKUltraX.MODID, item.getTranslationKey());
+        item.setRegistryName(MKUltraX.MODID, item.getTranslationKey().substring(5));
         ALL_ITEMS.add(item);
     }
 

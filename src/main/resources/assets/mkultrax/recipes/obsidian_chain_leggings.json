@@ -1,0 +1,25 @@
+{
+  "pattern": [
+    "lil",
+    "i i",
+    "l l"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "mod_name": "basemetals",
+      "type": "mod_exists"
+    }
+  ],
+  "result": {
+    "item": "mkultrax:obsidian_chain_leggings"
+  },
+  "key": {
+    "i": {
+      "item": "basemetals:obsidian_ingot"
+    },
+    "l": {
+      "item": "minecraft:leather"
+    }
+  }
+}

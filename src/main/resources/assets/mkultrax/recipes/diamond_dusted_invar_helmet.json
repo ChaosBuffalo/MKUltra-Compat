@@ -1,0 +1,24 @@
+{
+  "pattern": [
+    "idi",
+    "i i"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "mod_name": "basemetals",
+      "type": "mod_exists"
+    }
+  ],
+  "result": {
+    "item": "mkultrax:diamond_dusted_invar_helmet"
+  },
+  "key": {
+    "i": {
+      "item": "basemetals:invar_ingot"
+    },
+    "d": {
+      "item": "mkultra:diamond_dust"
+    }
+  }
+}

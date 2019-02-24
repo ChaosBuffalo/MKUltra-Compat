@@ -111,42 +111,6 @@ public class BaseMetalsIntegration implements IIntegration {
         modRegistry.remove(sun_icon);
         modRegistry.remove(moon_icon);
 
-        MKXRecipeRegistry.addRecipe(event, new ItemStack(obsidian_chain_chestplate),
-                "l l", "ili", "lil", 'i',
-                com.mcmoddev.basemetals.init.Materials.getMaterialByName(MaterialNames.OBSIDIAN).getItem(Names.INGOT),
-                'l', Items.LEATHER);
-        MKXRecipeRegistry.addRecipe(event, new ItemStack(obsidian_chain_leggings),
-                "lil", "i i", "l l", 'i',
-                com.mcmoddev.basemetals.init.Materials.getMaterialByName(MaterialNames.OBSIDIAN).getItem(Names.INGOT),
-                'l', Items.LEATHER);
-        MKXRecipeRegistry.addRecipe(event, new ItemStack(obsidian_chain_helmet),
-                "lil", "i i", 'i',
-                com.mcmoddev.basemetals.init.Materials.getMaterialByName(MaterialNames.OBSIDIAN).getItem(Names.INGOT),
-                'l', Items.LEATHER);
-        MKXRecipeRegistry.addRecipe(event, new ItemStack(obsidian_chain_boots),
-                "i i", "l l", 'i',
-                com.mcmoddev.basemetals.init.Materials.getMaterialByName(MaterialNames.OBSIDIAN).getItem(Names.INGOT),
-                'l', Items.LEATHER);
-
-
-        MKXRecipeRegistry.addRecipe(event, new ItemStack(diamond_dusted_invar_chestplate),
-                "i i", "idi", "iii", 'i',
-                com.mcmoddev.basemetals.init.Materials.getMaterialByName(MaterialNames.INVAR).getItem(Names.INGOT),
-                'd', ModItems.diamond_dust);
-        MKXRecipeRegistry.addRecipe(event, new ItemStack(diamond_dusted_invar_leggings),
-                "idi", "i i", "i i", 'i',
-                com.mcmoddev.basemetals.init.Materials.getMaterialByName(MaterialNames.INVAR).getItem(Names.INGOT),
-                'd', ModItems.diamond_dust);
-        MKXRecipeRegistry.addRecipe(event, new ItemStack(diamond_dusted_invar_helmet),
-                "idi", "i i", 'i',
-                com.mcmoddev.basemetals.init.Materials.getMaterialByName(MaterialNames.INVAR).getItem(Names.INGOT),
-                'd', ModItems.diamond_dust);
-        MKXRecipeRegistry.addRecipe(event, new ItemStack(diamond_dusted_invar_boots),
-                "d d", "i i", 'i',
-                com.mcmoddev.basemetals.init.Materials.getMaterialByName(MaterialNames.INVAR).getItem(Names.INGOT),
-                'd', ModItems.diamond_dust);
-
-
         CrusherRecipeRegistry.addNewCrusherRecipe(Items.DIAMOND, new ItemStack(ModItems.diamond_dust, 4));
         CrusherRecipeRegistry.addNewCrusherRecipe(Blocks.OBSIDIAN,
                 new ItemStack(com.mcmoddev.basemetals.init.Materials.getMaterialByName(MaterialNames.OBSIDIAN).getItem(Names.POWDER), 4));

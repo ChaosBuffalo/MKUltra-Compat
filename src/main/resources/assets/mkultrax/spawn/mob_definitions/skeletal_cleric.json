@@ -1,0 +1,23 @@
+{
+  "type": "net.minecraft.entity.monster.EntitySkeleton",
+  "name": "Skeletal Cleric",
+  "attributes": [
+    "mkultrax:captain_health",
+    "mkultrax:ranged_aggro",
+    "mkultrax:follow_range"
+  ],
+  "item_options": [
+    "mkultrax:captain_helm",
+    "mkultrax:cleric_chest",
+    "mkultrax:iron_cleric_weapons"
+  ],
+  "abilities": [
+    "mkultra:mob_ability.grasping_roots",
+    "mkultra:mob_ability.natures_remedy",
+    "mkultra:mob_ability.heal"
+  ],
+  "ai_modifiers": [
+    "mkultrax:remove_skeleton_ai",
+    "mkultrax:add_standard_ai"
+  ]
+}

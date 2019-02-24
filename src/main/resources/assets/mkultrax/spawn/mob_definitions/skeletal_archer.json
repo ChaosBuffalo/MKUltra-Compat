@@ -1,0 +1,21 @@
+{
+  "type": "net.minecraft.entity.monster.EntitySkeleton",
+  "name": "Skeletal Archer",
+  "attributes": [
+    "mkultrax:grunt_health",
+    "mkultrax:ranged_aggro",
+    "mkultrax:follow_range"
+  ],
+  "item_options": [
+    "mkultrax:grunt_helm",
+    "mkultrax:grunt_chest",
+    "mkultrax:bow"
+  ],
+  "abilities": [
+    "mkultra:mob_ability.fire_arrow"
+  ],
+  "ai_modifiers": [
+    "mkultrax:remove_skeleton_ai",
+    "mkultrax:add_standard_ai"
+  ]
+}
