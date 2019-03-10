@@ -21,12 +21,9 @@ import com.lycanitesmobs.core.entity.ai.EntityAITargetAttack;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAITasks;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.Loader;
 
-import java.util.UUID;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
@@ -78,9 +75,7 @@ public class LycanitesIntegration implements IIntegration {
                 creature.firstSpawn = false;
                 double scale = MathUtils.lerp_double(range.start, range.stop,
                         range.level, range.maxLevel);
-                Log.info("setting entity size %s, %f", entity.toString(), scale);
                 creature.setSizeScale(scale);
-
             }
         };
         AttributeSetter lycanites_mob_size = new AttributeSetter(MKUltraX.MODID,
