@@ -25,6 +25,9 @@ public interface IIntegration {
     default void init_blocks_phase() {
     }
 
+    default void init_ai_generators_phase() {
+    }
+
     default void init_custom_setters_phase(){
     }
 

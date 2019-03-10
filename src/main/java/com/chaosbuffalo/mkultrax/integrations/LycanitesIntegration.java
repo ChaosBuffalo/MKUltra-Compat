@@ -1,30 +1,29 @@
 package com.chaosbuffalo.mkultrax.integrations;
 
+import com.chaosbuffalo.mkultra.MKUltra;
+import com.chaosbuffalo.mkultra.core.IMobData;
+import com.chaosbuffalo.mkultra.core.MKUMobData;
 import com.chaosbuffalo.mkultra.core.PlayerAttributes;
-import com.chaosbuffalo.mkultra.spawn.AttributeRange;
-import com.chaosbuffalo.mkultra.spawn.AttributeSetter;
-import com.chaosbuffalo.mkultra.spawn.CustomModifier;
-import com.chaosbuffalo.mkultra.spawn.CustomSetter;
+import com.chaosbuffalo.mkultra.mob_ai.EntityAIReturnToSpawn;
+import com.chaosbuffalo.mkultra.spawn.*;
 import com.chaosbuffalo.mkultra.utils.MathUtils;
 import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.MKUltraX;
 import com.chaosbuffalo.mkultrax.MKXWorldListener;
+import com.chaosbuffalo.mkultrax.ai.lycanites.EntityAILycanitesLeash;
+import com.chaosbuffalo.mkultrax.custom_modifiers.lycanites.AIOverrideModifier;
 import com.chaosbuffalo.mkultrax.custom_modifiers.lycanites.SubspeciesModifier;
 import com.chaosbuffalo.mkultrax.init.MKXSpawnRegistry;
 import com.chaosbuffalo.targeting_api.Targeting;
 import com.google.gson.JsonObject;
 import com.lycanitesmobs.core.entity.EntityCreatureBase;
 import com.lycanitesmobs.core.entity.ai.EntityAITargetAttack;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
+import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAITasks;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.Loader;
 
-import java.util.UUID;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
@@ -48,6 +47,7 @@ public class LycanitesIntegration implements IIntegration {
                     range.level, range.maxLevel);
             if (entity instanceof EntityCreatureBase){
                 EntityCreatureBase creature = (EntityCreatureBase)entity;
+                creature.firstSpawn = false;
                 creature.applyLevel((int) creatureLevel);
             }
         };
@@ -72,14 +72,31 @@ public class LycanitesIntegration implements IIntegration {
         BiConsumer<EntityLivingBase, AttributeRange> size_setter = (entity, range) -> {
             if (entity instanceof EntityCreatureBase){
                 EntityCreatureBase creature = (EntityCreatureBase)entity;
-                creature.setSizeScale(MathUtils.lerp_double(range.start, range.stop,
-                        range.level, range.maxLevel));
+                creature.firstSpawn = false;
+                double scale = MathUtils.lerp_double(range.start, range.stop,
+                        range.level, range.maxLevel);
+                creature.setSizeScale(scale);
             }
         };
         AttributeSetter lycanites_mob_size = new AttributeSetter(MKUltraX.MODID,
                 "lycanites_size_scale", size_setter);
         MKXSpawnRegistry.regInternalAttributeSetter(lycanites_mob_size);
 
+    }
+
+    @Override
+    public void init_ai_generators_phase(){
+        BiFunction<EntityLiving, BehaviorChoice, EntityAIBase> addLeashRange = (entity, choice) -> {
+            IMobData mobData = MKUMobData.get(entity);
+            if (!(entity instanceof EntityCreatureBase)){
+                Log.info("Failed to add lycanites leash range ai, " +
+                        "because it is not an EntityCreatureBase");
+                return null;
+            }
+            return new EntityAILycanitesLeash((EntityCreatureBase)entity, mobData, 1.0);
+        };
+        AIGenerator leashRange = new AIGenerator(MKUltraX.MODID, "lycanites_leash_range", addLeashRange);
+        MKXSpawnRegistry.regInternalAIGenerator(leashRange);
     }
 
     @Override
@@ -97,6 +114,7 @@ public class LycanitesIntegration implements IIntegration {
             if (entity instanceof EntityCreatureBase && modifier instanceof SubspeciesModifier){
                 SubspeciesModifier subModifier = (SubspeciesModifier) modifier;
                 EntityCreatureBase creature = (EntityCreatureBase) entity;
+                creature.firstSpawn = false;
                 creature.setSubspecies(subModifier.subspeciesIndex);
             } else {
                 Log.info("Skipping apply subspecies modifier either entitiy is" +
@@ -107,6 +125,29 @@ public class LycanitesIntegration implements IIntegration {
                 new ResourceLocation(MKUltraX.MODID, "set_subspecies"),
                 subspecies_deserializer, subspecies_modifier);
         MKXSpawnRegistry.regInternalSetter(setSubspecies);
+
+        BiFunction<JsonObject, CustomSetter, CustomModifier> ai_override_deserialize = (obj, setter) ->{
+            if (obj.has("do_override")){
+                boolean doOverride = obj.get("do_override").getAsBoolean();
+                return new AIOverrideModifier(setter.getApplier(), doOverride);
+            }
+            Log.info("Error deserializing ai override setter. %s", obj.toString());
+            return null;
+        };
+        BiConsumer<EntityLivingBase, CustomModifier> override_modifier = (entity, modifier) ->{
+            if (entity instanceof EntityCreatureBase && modifier instanceof AIOverrideModifier){
+                AIOverrideModifier subModifier = (AIOverrideModifier) modifier;
+                EntityCreatureBase creature = (EntityCreatureBase) entity;
+                creature.setShouldTargetingOverride(subModifier.doOverride);
+            } else {
+                Log.info("Skipping apply ai override modifier either entitiy is" +
+                        " not EntityCreatureBase or modifier is not right type.");
+            }
+        };
+        CustomSetter setAIOverride = new CustomSetter(
+                new ResourceLocation(MKUltraX.MODID, "ai_override"),
+                ai_override_deserialize, override_modifier);
+        MKXSpawnRegistry.regInternalSetter(setAIOverride);
     }
 
     @Override
@@ -117,6 +158,7 @@ public class LycanitesIntegration implements IIntegration {
             return Targeting.isValidTarget(Targeting.TargetType.ENEMY, caster, target, true);
         };
         com.lycanitesmobs.api.Targeting.registerCallback(lycanitesWrapper);
+        com.lycanitesmobs.api.Targeting.replaceTargetingCallback(lycanitesWrapper);
         MKXWorldListener.registerEntityLoadedCallback(LycanitesIntegration::on_entity_added);
     }
 

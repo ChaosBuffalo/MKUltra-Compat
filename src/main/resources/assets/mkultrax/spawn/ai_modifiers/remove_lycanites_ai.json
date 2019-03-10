@@ -1,0 +1,10 @@
+{
+  "type": "REMOVE_AI",
+  "choices": [
+    {
+      "min_level": 0,
+      "task_type": "TASK",
+      "task_class": "com.lycanitesmobs.core.entity.ai.EntityAIWander"
+    }
+  ]
+}

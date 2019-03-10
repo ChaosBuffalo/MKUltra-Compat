@@ -1,8 +1,10 @@
 {
-  "RANGE_CAPTAIN": [
-    {
-      "spawn_list": "mkultrax:test_beholders",
-      "weight": 1.0
-    }
-  ]
+  "groups": {
+    "test": [
+      {
+        "spawn_list": "mkultrax:test_beholders",
+        "weight": 1.0
+      }
+    ]
+  }
 }

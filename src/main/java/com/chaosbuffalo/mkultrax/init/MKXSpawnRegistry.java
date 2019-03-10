@@ -1,5 +1,6 @@
 package com.chaosbuffalo.mkultrax.init;
 
+import com.chaosbuffalo.mkultra.spawn.AIGenerator;
 import com.chaosbuffalo.mkultra.spawn.AttributeSetter;
 import com.chaosbuffalo.mkultra.spawn.CustomSetter;
 import com.chaosbuffalo.mkultrax.Log;
@@ -19,6 +20,7 @@ public class MKXSpawnRegistry {
 
     private static final Set<CustomSetter> CUSTOM_SETTERS = new HashSet<>();
     private static final Set<AttributeSetter> ATTRIBUTE_SETTERS = new HashSet<>();
+    private static final Set<AIGenerator> AI_GENERATORS = new HashSet<>();
 
     public static void regInternalSetter(CustomSetter setter) {
         CUSTOM_SETTERS.add(setter);
@@ -27,6 +29,8 @@ public class MKXSpawnRegistry {
     public static void regInternalAttributeSetter(AttributeSetter setter){
         ATTRIBUTE_SETTERS.add(setter);
     }
+
+    public static void regInternalAIGenerator(AIGenerator generator){ AI_GENERATORS.add(generator);}
 
     @SuppressWarnings("unused")
     @SubscribeEvent
@@ -40,12 +44,18 @@ public class MKXSpawnRegistry {
         ATTRIBUTE_SETTERS.forEach(event.getRegistry()::register);
     }
 
+    @SubscribeEvent
+    public static void registerAIGenerators(RegistryEvent.Register<AIGenerator> event) {
+        AI_GENERATORS.forEach(event.getRegistry()::register);
+    }
+
     public static void initCustomSetters() {
         Log.info("Initializing item phase");
         for (IIntegration integration : MKUltraX.integrations){
             if (integration.isLoaded()){
                 integration.init_attribute_setters_phase();
                 integration.init_custom_setters_phase();
+                integration.init_ai_generators_phase();
             }
         }
     }

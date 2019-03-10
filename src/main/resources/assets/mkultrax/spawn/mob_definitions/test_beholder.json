@@ -5,6 +5,19 @@
     {
       "setter": "mkultrax:set_subspecies",
       "subspecies_index": 1
+    },
+    {
+      "setter": "mkultrax:ai_override",
+      "do_override": true
     }
+  ],
+  "attributes": [
+    "mkultrax:lycanites_level",
+    "mkultrax:lycanites_aggro_range",
+    "mkultrax:lycanites_tiny_size"
+  ],
+  "ai_modifiers": [
+    "mkultrax:remove_lycanites_ai",
+    "mkultrax:add_lycanites_ai"
   ]
 }
