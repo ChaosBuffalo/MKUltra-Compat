@@ -1,5 +1,5 @@
 {
-  "type": "net.minecraft.entity.monster.EntitySkeleton",
+  "type": "minecraft:skeleton",
   "name": "Skeletal Skulker",
   "attributes": [
     "mkultrax:captain_health",

@@ -1,5 +1,5 @@
 {
-  "type": "com.lycanitesmobs.mountainmobs.entity.EntityBeholder",
+  "type": "mountainmobs:beholder",
   "name": "Test Beholder",
   "custom_modifiers": [
     {
