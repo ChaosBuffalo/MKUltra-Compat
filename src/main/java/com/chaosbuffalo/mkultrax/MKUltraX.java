@@ -52,7 +52,7 @@ public class MKUltraX
         if (IntegrationUtils.isSpartanWeaponryPresent()){
             integrations.add(spartanWeaponry = new SpartanWeaponryIntegration());
         }
-        if (IntegrationUtils.isLycantesPresent()){
+        if (IntegrationUtils.isLootableBodiesPresent()){
             integrations.add(lootableBodiesIntegration = new LootableBodiesIntegration());
         }
     }
