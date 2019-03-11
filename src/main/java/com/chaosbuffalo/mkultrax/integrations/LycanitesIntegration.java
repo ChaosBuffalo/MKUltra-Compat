@@ -1,15 +1,11 @@
 package com.chaosbuffalo.mkultrax.integrations;
 
-import com.chaosbuffalo.mkultra.MKUltra;
 import com.chaosbuffalo.mkultra.core.IMobData;
 import com.chaosbuffalo.mkultra.core.MKUMobData;
-import com.chaosbuffalo.mkultra.core.PlayerAttributes;
-import com.chaosbuffalo.mkultra.mob_ai.EntityAIReturnToSpawn;
 import com.chaosbuffalo.mkultra.spawn.*;
 import com.chaosbuffalo.mkultra.utils.MathUtils;
 import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.MKUltraX;
-import com.chaosbuffalo.mkultrax.MKXWorldListener;
 import com.chaosbuffalo.mkultrax.ai.lycanites.EntityAILycanitesLeash;
 import com.chaosbuffalo.mkultrax.custom_modifiers.lycanites.AIOverrideModifier;
 import com.chaosbuffalo.mkultrax.custom_modifiers.lycanites.SubspeciesModifier;
@@ -152,14 +148,12 @@ public class LycanitesIntegration implements IIntegration {
 
     @Override
     public void mod_init() {
-        Targeting.registerFriendlyEntity("com.lycanitesmobs.elementalmobs.entity.EntityNymph");
-        Targeting.registerFriendlyEntity("com.lycanitesmobs.elementalmobs.entity.EntityWisp");
-        BiFunction<Entity, Entity, Boolean> lycanitesWrapper = (caster, target) -> {
-            return Targeting.isValidTarget(Targeting.TargetType.ENEMY, caster, target, true);
-        };
+        BiFunction<Entity, Entity, Boolean> lycanitesWrapper =
+                (caster, target) -> Targeting.isValidTarget(Targeting.TargetType.ENEMY,
+                        caster, target, true);
         com.lycanitesmobs.api.Targeting.registerCallback(lycanitesWrapper);
         com.lycanitesmobs.api.Targeting.replaceTargetingCallback(lycanitesWrapper);
-        MKXWorldListener.registerEntityLoadedCallback(LycanitesIntegration::on_entity_added);
+//        MKXWorldListener.registerEntityLoadedCallback(LycanitesIntegration::on_entity_added);
     }
 
     public static void on_entity_added(Entity entityIn) {
