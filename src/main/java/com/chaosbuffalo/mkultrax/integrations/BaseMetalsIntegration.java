@@ -2,7 +2,6 @@ package com.chaosbuffalo.mkultrax.integrations;
 
 import betterwithmods.common.BWRegistry;
 import com.chaosbuffalo.mkultra.MKUltra;
-import com.chaosbuffalo.mkultra.core.ArmorClass;
 import com.chaosbuffalo.mkultra.core.PlayerAttributes;
 import com.chaosbuffalo.mkultra.init.ModItems;
 import com.chaosbuffalo.mkultra.item.ItemAttributeArmor;
@@ -11,7 +10,6 @@ import com.chaosbuffalo.mkultra.item.ManaRegenIdol;
 import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.MKUltraX;
 import com.chaosbuffalo.mkultrax.init.MKXItemRegistry;
-import com.chaosbuffalo.mkultrax.init.MKXRecipeRegistry;
 import com.chaosbuffalo.mkultrax.utils.IntegrationUtils;
 import com.mcmoddev.basemetals.data.MaterialNames;
 import com.mcmoddev.basemetals.init.Materials;
@@ -110,7 +108,6 @@ public class BaseMetalsIntegration implements IIntegration {
         IForgeRegistryModifiable modRegistry = (IForgeRegistryModifiable) event.getRegistry();
         modRegistry.remove(sun_icon);
         modRegistry.remove(moon_icon);
-
         CrusherRecipeRegistry.addNewCrusherRecipe(Items.DIAMOND, new ItemStack(ModItems.diamond_dust, 4));
         CrusherRecipeRegistry.addNewCrusherRecipe(Blocks.OBSIDIAN,
                 new ItemStack(com.mcmoddev.basemetals.init.Materials.getMaterialByName(MaterialNames.OBSIDIAN).getItem(Names.POWDER), 4));

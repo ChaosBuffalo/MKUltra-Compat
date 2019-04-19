@@ -16,11 +16,11 @@
   },
   "key": {
     "s": {
-      "ore": "ingotBronze",
+      "ore": "ingotIron",
       "type": "forge:ore_dict"
     },
     "i": {
-      "ore": "ingotBrass",
+      "ore": "ingotGold",
       "type": "forge:ore_dict"
     }
   }
