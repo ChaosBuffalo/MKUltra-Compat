@@ -47,16 +47,25 @@ repositories {
         name 'MMD'
         url 'https://maven.mcmoddev.com/'
     }
+    maven { // AstralSorcery
+        name 'AstralSorcery'
+        url 'https://maven.hellfiredev.net/'
+    }
 }
 
 dependencies {
     deobfCompile 'ice-and-fire-dragons:iceandfire:1.6.1:1.12.2'
     deobfCompile "betterwithmods:BetterWithMods:1.12-2.3.20-1030"
     deobfCompile "spartan-weaponry:SpartanWeaponry-1.12.2:beta:1.2.3"
+    deobfProvided "hellfirepvp.astralsorcery:astralsorcery:1.12.2-1.10.15-v120"
+    runtime "hellfirepvp.astralsorcery:astralsorcery:1.12.2-1.10.15-v120"
     deobfProvided "com.mcmoddev:OreSpawn:${mc_version}-${orespawn_version}"
     runtime "com.mcmoddev:OreSpawn:${mc_version}-${orespawn_version}"
     deobfProvided "com.mcmoddev:BaseMetals:${mc_version}-${bme_version}"
     runtime "com.mcmoddev:BaseMetals:${mc_version}-${bme_version}"
+    deobfProvided("com.mcmoddev:MMDLib:${mc_version}-${mmdlib_version}") {
+        exclude group: 'mezz.jei'
+    }
 //    runtime group: 'mk-ultra', name: 'MKUltra', version: '0.80'
     compile fileTree(dir: 'libs', include: '*.jar')
 }

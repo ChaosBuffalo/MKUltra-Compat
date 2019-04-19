@@ -1,16 +1,11 @@
 package com.chaosbuffalo.mkultrax.integrations;
 
-import com.chaosbuffalo.mkultra.core.ArmorClass;
 import com.chaosbuffalo.mkultra.event.ItemRestrictionHandler;
 import com.chaosbuffalo.mkultra.utils.ItemUtils;
 import hellfirepvp.astralsorcery.common.item.tool.ItemChargedCrystalAxe;
 import hellfirepvp.astralsorcery.common.item.tool.ItemChargedCrystalSword;
 import hellfirepvp.astralsorcery.common.item.tool.ItemCrystalAxe;
 import hellfirepvp.astralsorcery.common.item.tool.ItemCrystalSword;
-import hellfirepvp.astralsorcery.common.registry.RegistryItems;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 
 /**

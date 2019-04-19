@@ -2,10 +2,12 @@ package com.chaosbuffalo.mkultrax.integrations;
 
 import com.chaosbuffalo.mkultra.core.IMobData;
 import com.chaosbuffalo.mkultra.core.MKUMobData;
+import com.chaosbuffalo.mkultra.core.PlayerAttributes;
 import com.chaosbuffalo.mkultra.spawn.*;
 import com.chaosbuffalo.mkultra.utils.MathUtils;
 import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.MKUltraX;
+import com.chaosbuffalo.mkultrax.MKXWorldListener;
 import com.chaosbuffalo.mkultrax.ai.lycanites.EntityAILycanitesLeash;
 import com.chaosbuffalo.mkultrax.custom_modifiers.lycanites.AIOverrideModifier;
 import com.chaosbuffalo.mkultrax.custom_modifiers.lycanites.SubspeciesModifier;
@@ -17,9 +19,11 @@ import com.lycanitesmobs.core.entity.ai.EntityAITargetAttack;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAITasks;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 
+import java.util.UUID;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
@@ -122,28 +126,28 @@ public class LycanitesIntegration implements IIntegration {
                 subspecies_deserializer, subspecies_modifier);
         MKXSpawnRegistry.regInternalSetter(setSubspecies);
 
-        BiFunction<JsonObject, CustomSetter, CustomModifier> ai_override_deserialize = (obj, setter) ->{
-            if (obj.has("do_override")){
-                boolean doOverride = obj.get("do_override").getAsBoolean();
-                return new AIOverrideModifier(setter.getApplier(), doOverride);
-            }
-            Log.info("Error deserializing ai override setter. %s", obj.toString());
-            return null;
-        };
-        BiConsumer<EntityLivingBase, CustomModifier> override_modifier = (entity, modifier) ->{
-            if (entity instanceof EntityCreatureBase && modifier instanceof AIOverrideModifier){
-                AIOverrideModifier subModifier = (AIOverrideModifier) modifier;
-                EntityCreatureBase creature = (EntityCreatureBase) entity;
-                creature.setShouldTargetingOverride(subModifier.doOverride);
-            } else {
-                Log.info("Skipping apply ai override modifier either entitiy is" +
-                        " not EntityCreatureBase or modifier is not right type.");
-            }
-        };
-        CustomSetter setAIOverride = new CustomSetter(
-                new ResourceLocation(MKUltraX.MODID, "ai_override"),
-                ai_override_deserialize, override_modifier);
-        MKXSpawnRegistry.regInternalSetter(setAIOverride);
+//        BiFunction<JsonObject, CustomSetter, CustomModifier> ai_override_deserialize = (obj, setter) ->{
+//            if (obj.has("do_override")){
+//                boolean doOverride = obj.get("do_override").getAsBoolean();
+//                return new AIOverrideModifier(setter.getApplier(), doOverride);
+//            }
+//            Log.info("Error deserializing ai override setter. %s", obj.toString());
+//            return null;
+//        };
+//        BiConsumer<EntityLivingBase, CustomModifier> override_modifier = (entity, modifier) ->{
+//            if (entity instanceof EntityCreatureBase && modifier instanceof AIOverrideModifier){
+//                AIOverrideModifier subModifier = (AIOverrideModifier) modifier;
+//                EntityCreatureBase creature = (EntityCreatureBase) entity;
+//                creature.setShouldTargetingOverride(subModifier.doOverride);
+//            } else {
+//                Log.info("Skipping apply ai override modifier either entitiy is" +
+//                        " not EntityCreatureBase or modifier is not right type.");
+//            }
+//        };
+//        CustomSetter setAIOverride = new CustomSetter(
+//                new ResourceLocation(MKUltraX.MODID, "ai_override"),
+//                ai_override_deserialize, override_modifier);
+//        MKXSpawnRegistry.regInternalSetter(setAIOverride);
     }
 
     @Override
@@ -153,35 +157,23 @@ public class LycanitesIntegration implements IIntegration {
                         caster, target, true);
         com.lycanitesmobs.api.Targeting.registerCallback(lycanitesWrapper);
         com.lycanitesmobs.api.Targeting.replaceTargetingCallback(lycanitesWrapper);
-//        MKXWorldListener.registerEntityLoadedCallback(LycanitesIntegration::on_entity_added);
+        MKXWorldListener.registerEntityLoadedCallback(LycanitesIntegration::on_entity_added);
     }
 
     public static void on_entity_added(Entity entityIn) {
-//        if (entityIn instanceof EntityCreatureBase){
-//            EntityCreatureBase creature = (EntityCreatureBase) entityIn;
-//            double scale = creature.getRenderScale();
-//            if (scale > 1.0){
-//                AttributeModifier modifier = creature.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).getModifier(UUID.fromString("749d6722-b566-472d-b33c-d3c1b8cd0b8d"));
-//                if (modifier == null){
-//                    creature.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)
-//                            .applyModifier(new AttributeModifier(
-//                                    UUID.fromString("749d6722-b566-472d-b33c-d3c1b8cd0b8d"),
-//                                    "Size Health Bonus",
-//                                    scale + 2.0, PlayerAttributes.OP_SCALE_MULTIPLICATIVE));
-//                }
-//            }
-//            double distance2 = creature.getDistanceSq(BlockPos.ORIGIN);
-//
-//            double distanceOut = distance2 / (DISTANCE_SCALING * DISTANCE_SCALING);
-//            if (distanceOut > 1.0){
-//                int scaleFactor = Math.min((int) distanceOut, MAX_SCALE_ZONES);
-//                if (creature.getLevel() < (scaleFactor+2)*LEVEL_SCALING){
-//                    creature.addLevel((creature.getRNG().nextInt(scaleFactor*LEVEL_SCALING)));
-//
-//
-//                }
-//
-//            }
-//        }
+        if (entityIn instanceof EntityCreatureBase) {
+            EntityCreatureBase creature = (EntityCreatureBase) entityIn;
+            double scale = creature.getRenderScale();
+            if (scale > 1.0) {
+                AttributeModifier modifier = creature.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).getModifier(UUID.fromString("749d6722-b566-472d-b33c-d3c1b8cd0b8d"));
+                if (modifier == null) {
+                    creature.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH)
+                            .applyModifier(new AttributeModifier(
+                                    UUID.fromString("749d6722-b566-472d-b33c-d3c1b8cd0b8d"),
+                                    "Size Health Bonus",
+                                    scale + 2.0, PlayerAttributes.OP_SCALE_MULTIPLICATIVE));
+                }
+            }
+        }
     }
 }
