@@ -36,7 +36,7 @@ public class ResurrectPlayerPacket implements IMessage {
     public static class Handler extends MessageHandler.Server<ResurrectPlayerPacket> {
 
         @Override
-        public IMessage handleServerMessage(final EntityPlayer player, ResurrectPlayerPacket msg, MessageContext ctx) {
+        public void handleServerMessage(final EntityPlayer player, ResurrectPlayerPacket msg) {
             ServerUtils.addScheduledTask(() -> {
 
                 if (player.getHeldItemMainhand().getItem() == LootableBodiesIntegration.phoenix_dust) {
@@ -74,7 +74,7 @@ public class ResurrectPlayerPacket implements IMessage {
                     ItemHelper.shrinkStack(player, player.getHeldItemMainhand(), 1);
                 }
             });
-            return null;
+            return;
         }
     }
 }

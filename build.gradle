@@ -67,7 +67,8 @@ dependencies {
     deobfProvided("com.mcmoddev:MMDLib:${mc_version}-${mmdlib_version}") {
         exclude group: 'mezz.jei'
     }
-//    runtime group: 'mk-ultra', name: 'MKUltra', version: '0.80'
+    deobfCompile group: 'targetingapi', name: 'targeting_api', version: '0.13'
+    deobfCompile group: 'mk-ultra', name: 'MKUltra', version: '0.81'
     compile fileTree(dir: 'libs', include: '*.jar')
 }
 
