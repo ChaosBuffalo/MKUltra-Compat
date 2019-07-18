@@ -36,7 +36,6 @@ public class PortalBlock extends Block implements ISoulSensitive, ITileEntityPro
 
     public PortalBlock(String unlocalizedName, Material material, float hardness, float resistance) {
         super(material);
-        this.setRegistryName(MKUltraX.MODID, unlocalizedName);
         this.setCreativeTab(MKUltra.MKULTRA_TAB);
         this.setHardness(hardness);
         this.setResistance(resistance);

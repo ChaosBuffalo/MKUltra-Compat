@@ -156,7 +156,7 @@ public class LycanitesIntegration implements IIntegration {
                 (caster, target) -> Targeting.isValidTarget(Targeting.TargetType.ENEMY,
                         caster, target, true);
         com.lycanitesmobs.api.Targeting.registerCallback(lycanitesWrapper);
-        com.lycanitesmobs.api.Targeting.replaceTargetingCallback(lycanitesWrapper);
+//        com.lycanitesmobs.api.Targeting.replaceTargetingCallback(lycanitesWrapper);
         MKXWorldListener.registerEntityLoadedCallback(LycanitesIntegration::on_entity_added);
     }
 
