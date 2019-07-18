@@ -39,7 +39,6 @@ public class BWMIntegration implements IIntegration {
     public static Block portalBlock;
 
     public static Item HEMP_SEED_BREAD = new ItemFood(7, 8.0f, false)
-            .setRegistryName(MKUltraX.MODID, "hemp_seed_bread")
             .setTranslationKey("hemp_seed_bread");
 
     @Override
