@@ -21,7 +21,7 @@ public class MKUltraX
 {
     public static final String MODID = "mkultrax";
     public static final String NAME = "MK Ultra Compat";
-    public static final String VERSION = "0.06";
+    public static final String VERSION = "@VERSION@";
 
     public static IceAndFireIntegration iceAndFire;
     public static LycanitesIntegration lycanites;
@@ -52,7 +52,7 @@ public class MKUltraX
         if (IntegrationUtils.isSpartanWeaponryPresent()){
             integrations.add(spartanWeaponry = new SpartanWeaponryIntegration());
         }
-        if (IntegrationUtils.isLycantesPresent()){
+        if (IntegrationUtils.isLootableBodiesPresent()){
             integrations.add(lootableBodiesIntegration = new LootableBodiesIntegration());
         }
     }
