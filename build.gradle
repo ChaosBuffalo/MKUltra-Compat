@@ -54,9 +54,9 @@ repositories {
 }
 
 dependencies {
-    deobfCompile 'ice-and-fire-dragons:iceandfire:1.6.1:1.12.2'
+    deobfCompile 'ice-and-fire-dragons:iceandfire:1.8.0'
+    deobfCompile "spartan-weaponry:SpartanWeaponry-1.12.2:beta:1.3.0"
     deobfCompile "betterwithmods:BetterWithMods:1.12-2.3.20-1030"
-    deobfCompile "spartan-weaponry:SpartanWeaponry-1.12.2:beta:1.2.3"
     deobfProvided "hellfirepvp.astralsorcery:astralsorcery:1.12.2-1.10.15-v120"
     runtime "hellfirepvp.astralsorcery:astralsorcery:1.12.2-1.10.15-v120"
     deobfProvided "com.mcmoddev:OreSpawn:${mc_version}-${orespawn_version}"
@@ -66,8 +66,8 @@ dependencies {
     deobfProvided("com.mcmoddev:MMDLib:${mc_version}-${mmdlib_version}") {
         exclude group: 'mezz.jei'
     }
-    deobfCompile group: 'targetingapi', name: 'targeting_api', version: '0.13'
-    deobfCompile group: 'mk-ultra', name: 'MKUltra', version: '0.81'
+    deobfCompile group: 'targetingapi', name: 'targeting_api', version: '0.15'
+    deobfCompile group: 'mk-ultra', name: 'MKUltra', version: '0.96'
     compile fileTree(dir: 'libs', include: '*.jar')
 }
 
