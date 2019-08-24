@@ -7,7 +7,7 @@ import betterwithmods.common.items.tools.ItemSoulforgedMattock;
 import com.chaosbuffalo.mkultra.GameConstants;
 import com.chaosbuffalo.mkultra.effects.spells.HellfireSmoke;
 import com.chaosbuffalo.mkultra.effects.spells.ManaRegenSmokeEffect;
-import com.chaosbuffalo.mkultra.event.ItemRestrictionHandler;
+import com.chaosbuffalo.mkultra.event.ItemEventHandler;
 import com.chaosbuffalo.mkultra.init.ModItems;
 import com.chaosbuffalo.mkultra.utils.ItemUtils;
 import com.chaosbuffalo.mkultra.utils.SmokeUtils;
@@ -50,7 +50,7 @@ public class BWMIntegration implements IIntegration {
     public void mod_init() {
 
         ItemUtils.addCriticalStats(ItemSoulforgedMattock.class, 1, .05f, 2.0f);
-        ItemRestrictionHandler.addShieldRestrictedItem(ItemSoulforgedBattleAxe.class, 0);
+        ItemEventHandler.addShieldRestrictedItem(ItemSoulforgedBattleAxe.class, 0);
 
         SmokeUtils.registerSmokeable(ItemMaterial.getMaterial(ItemMaterial.EnumMaterial.HEMP),
                 ManaRegenSmokeEffect.INSTANCE, 10*GameConstants.TICKS_PER_SECOND, 1);

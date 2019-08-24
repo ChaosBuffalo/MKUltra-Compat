@@ -127,25 +127,25 @@ public class BaseMetalsIntegration implements IIntegration {
                 STEEL_INFUSED_BONE_MAT, 1,
                 EntityEquipmentSlot.CHEST,
                 new ItemAttributeEntry(1.0, PlayerAttributes.OP_INCREMENT,
-                        (RangedAttribute)PlayerAttributes.MAGIC_ATTACK_DAMAGE))
+                        PlayerAttributes.MAGIC_ATTACK_DAMAGE))
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
         MKXItemRegistry.regInternal(steel_infused_bone_helmet = new ItemAttributeArmor(
                 "steel_infused_bone_helmet", STEEL_INFUSED_BONE_MAT, 1,
                 EntityEquipmentSlot.HEAD,
                 new ItemAttributeEntry(0.5, PlayerAttributes.OP_INCREMENT,
-                        (RangedAttribute) PlayerAttributes.MANA_REGEN))
+                        PlayerAttributes.MANA_REGEN))
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
         MKXItemRegistry.regInternal(steel_infused_bone_leggings = new ItemAttributeArmor(
                 "steel_infused_bone_leggings", STEEL_INFUSED_BONE_MAT, 2,
                 EntityEquipmentSlot.LEGS,
                 new ItemAttributeEntry(2, PlayerAttributes.OP_INCREMENT,
-                        (RangedAttribute)PlayerAttributes.MAX_MANA))
+                        PlayerAttributes.MAX_MANA))
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
         MKXItemRegistry.regInternal(steel_infused_bone_boots = new ItemAttributeArmor(
                 "steel_infused_bone_boots", STEEL_INFUSED_BONE_MAT, 2,
                 EntityEquipmentSlot.FEET,
                 new ItemAttributeEntry(2, PlayerAttributes.OP_INCREMENT,
-                        (RangedAttribute)PlayerAttributes.MAX_MANA))
+                        PlayerAttributes.MAX_MANA))
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
 
         MKXItemRegistry.regInternal(diamond_dusted_invar_chestplate = new ItemAttributeArmor(
@@ -161,7 +161,7 @@ public class BaseMetalsIntegration implements IIntegration {
                 DIAMOND_DUSTED_INVAR_MAT, 1,
                 EntityEquipmentSlot.HEAD,
                 new ItemAttributeEntry(0.75, PlayerAttributes.OP_INCREMENT,
-                        (RangedAttribute)PlayerAttributes.MANA_REGEN))
+                        PlayerAttributes.MANA_REGEN))
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
 
         MKXItemRegistry.regInternal(diamond_dusted_invar_leggings = new ItemAttributeArmor(
@@ -169,7 +169,7 @@ public class BaseMetalsIntegration implements IIntegration {
                 DIAMOND_DUSTED_INVAR_MAT, 2,
                 EntityEquipmentSlot.LEGS,
                 new ItemAttributeEntry(5.0, PlayerAttributes.OP_INCREMENT,
-                        (RangedAttribute)PlayerAttributes.MAX_MANA))
+                        PlayerAttributes.MAX_MANA))
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
 
         MKXItemRegistry.regInternal(diamond_dusted_invar_boots = new ItemAttributeArmor(
@@ -177,7 +177,7 @@ public class BaseMetalsIntegration implements IIntegration {
                 DIAMOND_DUSTED_INVAR_MAT, 2,
                 EntityEquipmentSlot.FEET,
                 new ItemAttributeEntry(.1, PlayerAttributes.OP_SCALE_ADDITIVE,
-                        (RangedAttribute)PlayerAttributes.COOLDOWN))
+                        PlayerAttributes.COOLDOWN))
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
 
         MKXItemRegistry.regInternal(copper_threaded_cloth = new Item().setCreativeTab(MKUltra.MKULTRA_TAB),
@@ -188,26 +188,26 @@ public class BaseMetalsIntegration implements IIntegration {
                 "copper_threaded_chestplate", COPPER_THREADED_MAT, 1,
                 EntityEquipmentSlot.CHEST,
                 new ItemAttributeEntry(2, PlayerAttributes.OP_INCREMENT,
-                        (RangedAttribute)PlayerAttributes.MAX_MANA))
+                        PlayerAttributes.MAX_MANA))
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
 
         MKXItemRegistry.regInternal(copper_threaded_helmet = new ItemAttributeArmor(
                 "copper_threaded_helmet", COPPER_THREADED_MAT, 1,
                 EntityEquipmentSlot.HEAD,
                 new ItemAttributeEntry(0.5, PlayerAttributes.OP_INCREMENT,
-                        (RangedAttribute)PlayerAttributes.MANA_REGEN))
+                        PlayerAttributes.MANA_REGEN))
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
         MKXItemRegistry.regInternal(copper_threaded_leggings = new ItemAttributeArmor(
                 "copper_threaded_leggings", COPPER_THREADED_MAT, 2,
                 EntityEquipmentSlot.LEGS,
                 new ItemAttributeEntry(2, PlayerAttributes.OP_INCREMENT,
-                        (RangedAttribute)PlayerAttributes.MAX_MANA))
+                        PlayerAttributes.MAX_MANA))
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
         MKXItemRegistry.regInternal(copper_threaded_boots = new ItemAttributeArmor(
                 "copper_threaded_boots", COPPER_THREADED_MAT, 2,
                 EntityEquipmentSlot.FEET,
                 new ItemAttributeEntry(2, PlayerAttributes.OP_INCREMENT,
-                        (RangedAttribute)PlayerAttributes.MAX_MANA))
+                        PlayerAttributes.MAX_MANA))
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
 
 
@@ -221,7 +221,7 @@ public class BaseMetalsIntegration implements IIntegration {
         MKXItemRegistry.regInternal(obsidian_chain_chestplate = new ItemAttributeArmor(
                 "obsidian_chain_chestplate", OBSIDIAN_CHAIN, 1, EntityEquipmentSlot.CHEST,
                 new ItemAttributeEntry(.1, PlayerAttributes.OP_SCALE_ADDITIVE,
-                        (RangedAttribute)PlayerAttributes.COOLDOWN))
+                        PlayerAttributes.COOLDOWN))
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
         MKXItemRegistry.regInternal(obsidian_chain_leggings = new ItemAttributeArmor(
                 "obsidian_chain_leggings", OBSIDIAN_CHAIN, 2, EntityEquipmentSlot.LEGS,
@@ -231,7 +231,7 @@ public class BaseMetalsIntegration implements IIntegration {
         MKXItemRegistry.regInternal(obsidian_chain_helmet = new ItemAttributeArmor(
                 "obsidian_chain_helmet", OBSIDIAN_CHAIN, 1, EntityEquipmentSlot.HEAD,
                 new ItemAttributeEntry(1.0, PlayerAttributes.OP_INCREMENT,
-                        (RangedAttribute)PlayerAttributes.MANA_REGEN))
+                        PlayerAttributes.MANA_REGEN))
                 .setCreativeTab(MKUltra.MKULTRA_TAB));
 
         MKXItemRegistry.regInternal(manaRegenIdolCopper = new ManaRegenIdol(
