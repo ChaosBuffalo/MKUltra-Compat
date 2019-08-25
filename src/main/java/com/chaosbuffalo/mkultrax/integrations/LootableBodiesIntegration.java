@@ -4,6 +4,7 @@ import com.chaosbuffalo.mkultra.init.Remapper;
 import com.chaosbuffalo.mkultrax.Log;
 import com.chaosbuffalo.mkultrax.init.MKXItemRegistry;
 import com.chaosbuffalo.mkultrax.items.lootablebodies.PhoenixDust;
+import com.chaosbuffalo.mkultrax.network.packets.client.ResurrectPlayerPacket;
 import com.chaosbuffalo.targeting_api.Targeting;
 import com.google.common.collect.Lists;
 import net.minecraft.entity.Entity;
@@ -14,6 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.relauncher.Side;
 
 import java.util.List;
 
@@ -35,6 +37,7 @@ public class LootableBodiesIntegration implements IIntegration {
     @Override
     public void mod_init() {
 
+        MKUltra.packetHandler.registerPacket(ResurrectPlayerPacket.class, new ResurrectPlayerPacket.Handler(), Side.SERVER);
         Targeting.registerFriendlyEntity(BODY_ENTITY_NAME);
 
         try {

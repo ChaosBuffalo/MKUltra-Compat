@@ -39,42 +39,42 @@ public class ResurrectPlayerPacket implements IMessage {
         public void handleServerMessage(final EntityPlayer player, ResurrectPlayerPacket msg) {
             ServerUtils.addScheduledTask(() -> {
 
-                if (player.getHeldItemMainhand().getItem() == LootableBodiesIntegration.phoenix_dust) {
-
-                    List<Entity> corpses = LootableBodiesIntegration.getLootableBodiesAroundPlayer(player, PhoenixDust.RANGE);
-
-                    Log.info("S corpses size %d", corpses.size());
-                    corpses.forEach(c -> Log.info("nearby corpse %s", c.toString()));
-
-                    Entity corpse = LootableBodiesIntegration.getLootableBodyAroundPlayer(player, PhoenixDust.RANGE);
-                    if (corpse == null) {
-                        Log.info("could not find any corpses nearby!");
-                        return;
-                    }
-
-                    Log.info("found target corpse %s", corpse.toString());
-
-                    String corpsePlayerName = corpse.getCustomNameTag();
-
-                    EntityPlayer targetPlayer = player.world.getPlayerEntityByName(corpsePlayerName);
-                    if (targetPlayer != null) {
-                        Log.info("found player for corpse %s", targetPlayer.toString());
-                    } else {
-                        Log.info("player for corpse not found!");
-                        return;
-                    }
-
-                    if (targetPlayer instanceof EntityPlayerMP) {
-                        ((EntityPlayerMP) targetPlayer).connection.setPlayerLocation(player.posX, player.posY + 1, player.posZ, targetPlayer.rotationYaw, targetPlayer.rotationPitch);
-                    } else {
-                        // Not sure when this might happen
-                        targetPlayer.setLocationAndAngles(player.posX, player.posY + 1, player.posZ, targetPlayer.rotationYaw, targetPlayer.rotationPitch);
-                    }
-
-                    ItemHelper.shrinkStack(player, player.getHeldItemMainhand(), 1);
+                if (player.getHeldItemMainhand().getItem() != LootableBodiesIntegration.phoenix_dust) {
+                    return;
                 }
+
+                List<Entity> corpses = LootableBodiesIntegration.getLootableBodiesAroundPlayer(player, PhoenixDust.RANGE);
+
+                Log.info("S corpses size %d", corpses.size());
+                corpses.forEach(c -> Log.info("nearby corpse %s", c.toString()));
+
+                Entity corpse = LootableBodiesIntegration.getLootableBodyAroundPlayer(player, PhoenixDust.RANGE);
+                if (corpse == null) {
+                    Log.info("could not find any corpses nearby!");
+                    return;
+                }
+
+                Log.info("found target corpse %s", corpse.toString());
+
+                String corpsePlayerName = corpse.getCustomNameTag();
+
+                EntityPlayer targetPlayer = player.world.getPlayerEntityByName(corpsePlayerName);
+                if (targetPlayer != null) {
+                    Log.info("found player for corpse %s", targetPlayer.toString());
+                } else {
+                    Log.info("player for corpse not found!");
+                    return;
+                }
+
+                if (targetPlayer instanceof EntityPlayerMP) {
+                    ((EntityPlayerMP) targetPlayer).connection.setPlayerLocation(player.posX, player.posY + 1, player.posZ, targetPlayer.rotationYaw, targetPlayer.rotationPitch);
+                } else {
+                    // Not sure when this might happen
+                    targetPlayer.setLocationAndAngles(player.posX, player.posY + 1, player.posZ, targetPlayer.rotationYaw, targetPlayer.rotationPitch);
+                }
+
+                ItemHelper.shrinkStack(player, player.getHeldItemMainhand(), 1);
             });
-            return;
         }
     }
 }
