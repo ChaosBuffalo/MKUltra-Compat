@@ -67,7 +67,7 @@ dependencies {
         exclude group: 'mezz.jei'
     }
     deobfCompile group: 'targetingapi', name: 'targeting_api', version: '0.15'
-    deobfCompile group: 'mk-ultra', name: 'MKUltra', version: '0.96'
+    deobfCompile group: 'mk-ultra', name: 'MKUltra', version: '0.97'
     compile fileTree(dir: 'libs', include: '*.jar')
 }
 

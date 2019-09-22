@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 
 @Mod(modid = MKUltraX.MODID, name = MKUltraX.NAME, version = MKUltraX.VERSION,
-        dependencies="required-after:mkultra@[0.76,);after:thebetweenlands;after:iceandfire;after:lycanitesmobs;after:astralsorcery;" +
+        dependencies="required-after:mkultra@[0.97,);after:thebetweenlands;after:iceandfire;after:lycanitesmobs;after:astralsorcery;" +
                 "after:basemetals;after:poweradvantage;after:betterwithmods;required-after:targeting_api")
 public class MKUltraX
 {
